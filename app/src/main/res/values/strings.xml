@@ -16,6 +16,6 @@
     <string name="form_username_profile">Username</string>
     <string name="tabel_email_profile">Email</string>
     <string name="email_profile_hint">ex: kevin@gmail.com</string>
-    <string name="tv_table_nomor_profile">Nomor Whatsapp</string>
+    <string name="tv_table_nomor_profile">Nomor Hp</string>
     <string name="et_nomor_profile_hint">ex: +62813456782</string>
 </resources>
