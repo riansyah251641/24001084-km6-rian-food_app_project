@@ -61,4 +61,19 @@
     <color name="md_theme_dark_surfaceTint">#C9BFFF</color>
     <color name="md_theme_dark_outlineVariant">#48454E</color>
     <color name="md_theme_dark_scrim">#000000</color>
+
+<!--    local setup color-->
+    <color name="bg_light">#F7F8F9</color>
+    <color name="bg_dark">#121223</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="button_yellow">#FF7622</color>
+    <color name="base_yellow">#FFBF6D</color>
+    <color name="base_grey">#98A8B8</color>
+    <color name="base_green">#059C6A</color>
+    <color name="base_warm_white">#F0F5FA</color>
+    <color name="text_bold">#181C2E</color>
+    <color name="text_semibold">#32343E</color>
+    <color name="text_desk">#676767</color>
+    
 </resources>

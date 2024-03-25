@@ -1,5 +1,21 @@
 <resources>
-    <string name="app_name">ProjectfoodApp</string>
+    <string name="app_name">Riansyah FoodApp</string>
+    <string name="greating_users">Hii Ryan!</string>
+    <string name="detail_greating_add">Mau Makan Apa Hari ini?</string>
+    <string name="banner_welcome">Selamat Datang di</string>
+    <string name="banner_title"> RATATOUILLE</string>
+    <string name="name_list_food">List Menu Makanan</string>
+    <string name="namer_catalog">isi text</string>
+    <string name="name_product">Nama Jenis Pizza</string>
+    <string name="price_info">price list</string>
+    <string name="text_kategori">Kategori Makanan</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_tagline">Every One Deserve to Eat Well</string>
+    <string name="text_header_user">Mau Makan Apa Hari Ini ?</string>
+    <string name="form_username_profile">Username</string>
+    <string name="tabel_email_profile">Email</string>
+    <string name="email_profile_hint">ex: kevin@gmail.com</string>
+    <string name="tv_table_nomor_profile">Nomor Whatsapp</string>
+    <string name="et_nomor_profile_hint">ex: +62813456782</string>
 </resources>
