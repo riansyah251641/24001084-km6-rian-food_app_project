@@ -63,7 +63,7 @@
         android:background="@drawable/bg_oval_white"
         android:padding="8dp"
         android:layout_height="40dp"
-        android:src="@drawable/ic_tab_person"
+        android:src="@drawable/ic_person_warm_yellow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
