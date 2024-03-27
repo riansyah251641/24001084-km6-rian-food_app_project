@@ -12,34 +12,34 @@ class DataSourceFoodCategoryImpl(): DataSourceFoodCategory {
         return mutableListOf(
             Category(
                 name = "Pizza",
-                image = R.drawable.category_pizza,
+                image = "https://github.com/riansyah251641/food_app_asset/blob/main/category/category_pizza.png?raw=true",
             ),
             Category(
-                image = R.drawable.category_hamburger,
+                image = "https://github.com/riansyah251641/food_app_asset/blob/main/category/category_hamburger.png?raw=true",
                 name = "Hamburger"
             ),
             Category(
-                image = R.drawable.category_hotdog,
+                image = "https://github.com/riansyah251641/food_app_asset/blob/main/category/category_hotdog.png?raw=true",
                 name = "Hot Dog"
             ),
             Category(
-                image = R.drawable.category_ramen,
+                image = "https://github.com/riansyah251641/food_app_asset/blob/main/category/category_ramen.png?raw=true",
                 name = "Ramen"
             ),
             Category(
-                image = R.drawable.category_salad,
+                image = "https://github.com/riansyah251641/food_app_asset/blob/main/category/category_salad.png?raw=true",
                 name = "Salad"
             ),
             Category(
-                image = R.drawable.category_pizza,
+                image = "https://github.com/riansyah251641/food_app_asset/blob/main/category/category_pizza.png?raw=true",
                 name = "isi lain 1"
             ),
             Category(
-                image = R.drawable.category_hamburger,
+                image = "https://github.com/riansyah251641/food_app_asset/blob/main/category/category_hamburger.png?raw=true",
                 name = "isi lain 2"
             ),
             Category(
-                image = R.drawable.category_hotdog,
+                image = "https://github.com/riansyah251641/food_app_asset/blob/main/category/category_hotdog.png?raw=true",
                 name = "isi lain 3"
             ),
         )

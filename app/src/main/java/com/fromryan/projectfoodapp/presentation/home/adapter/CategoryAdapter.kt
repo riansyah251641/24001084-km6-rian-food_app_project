@@ -3,6 +3,8 @@ package com.fromryan.projectfoodapp.presentation.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.data.model.Category
 import com.fromryan.projectfoodapp.databinding.ItemFoodListcategoryBinding
 
@@ -17,7 +19,10 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Category) {
             binding.tvCategoryName.text = item.name
-            binding.ivCategoryImage.setImageResource(item.image)
+            binding.ivCategoryImage.load(item.image) {
+                crossfade(true)
+                error(R.mipmap.ic_launcher)
+            }
         }
     }
 
