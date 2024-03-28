@@ -29,7 +29,6 @@ class CardFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentCardBinding.inflate(layoutInflater,container,false)
         return binding.root
-
     }
 
 }
