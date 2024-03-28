@@ -44,35 +44,26 @@
             android:textColor="@color/base_green" />
     </LinearLayout>
 
-    <include
-        android:id="@+id/layout_state"
-        layout="@layout/layout_content_state"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/cv_section_checkout"
-        app:layout_constraintTop_toBottomOf="@+id/ll_action_bar"
-        />
-
-<androidx.core.widget.NestedScrollView
-    android:id="@+id/rv_cart"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    app:layout_constraintBottom_toTopOf="@id/cv_section_checkout"
-    app:layout_constraintTop_toBottomOf="@+id/ll_action_bar">
-
-
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cart"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="20dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:orientation="vertical"
         android:paddingBottom="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/cv_section_checkout"
+        app:layout_constraintTop_toBottomOf="@+id/ll_action_bar"
         tools:listitem="@layout/item_cart_catalog" />
-</androidx.core.widget.NestedScrollView>
 
+    <include
+        android:id="@+id/layout_state"
+        layout="@layout/layout_content_empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/cv_section_checkout"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_section_checkout"

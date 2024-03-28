@@ -62,6 +62,7 @@
     <color name="md_theme_dark_outlineVariant">#48454E</color>
     <color name="md_theme_dark_scrim">#000000</color>
 
+
 <!--    local setup color-->
     <color name="bg_light">#F7F8F9</color>
     <color name="bg_dark">#121223</color>
@@ -75,5 +76,6 @@
     <color name="text_bold">#181C2E</color>
     <color name="text_semibold">#32343E</color>
     <color name="text_desk">#676767</color>
+    <color name="transparent">#00FFFFFF</color>
     
 </resources>

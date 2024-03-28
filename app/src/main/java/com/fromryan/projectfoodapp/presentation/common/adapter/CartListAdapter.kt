@@ -9,7 +9,6 @@ import coil.load
 import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.data.base.ViewHolderBinder
 import com.fromryan.projectfoodapp.data.model.Cart
-import com.fromryan.projectfoodapp.data.model.CartCatalog
 import com.fromryan.projectfoodapp.databinding.ItemCartCatalogBinding
 import com.fromryan.projectfoodapp.databinding.ItemCartCatalogOrderBinding
 import com.fromryan.projectfoodapp.utils.doneEditing
@@ -18,25 +17,25 @@ class CartListAdapter(private val cartListener: CartListener? = null) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private val dataDiffer =
-            AsyncListDiffer(this, object : DiffUtil.ItemCallback<CartCatalog>() {
+            AsyncListDiffer(this, object : DiffUtil.ItemCallback<Cart>() {
                 override fun areItemsTheSame(
-                    oldItem: CartCatalog,
-                    newItem: CartCatalog
+                    oldItem: Cart,
+                    newItem: Cart
                 ): Boolean {
-                    return oldItem.cart.id == newItem.cart.id && oldItem.catalog.id == newItem.catalog.id
+                    return oldItem.id == newItem.id && oldItem.id == newItem.id
                 }
 
                 override fun areContentsTheSame(
-                    oldItem: CartCatalog,
-                    newItem: CartCatalog
+                    oldItem: Cart,
+                    newItem: Cart
                 ): Boolean {
                     return oldItem.hashCode() == newItem.hashCode()
                 }
             })
 
-        fun submitData(data: List<Cart>) {
-//            dataDiffer.submitList(data)
-        }
+    fun submitData(data: List<Cart>) {
+        dataDiffer.submitList(data)
+    }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             return if (cartListener != null) CartViewHolder(
@@ -53,7 +52,7 @@ class CartListAdapter(private val cartListener: CartListener? = null) :
         override fun getItemCount(): Int = dataDiffer.currentList.size
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            (holder as ViewHolderBinder<CartCatalog>).bind(dataDiffer.currentList[position])
+            (holder as ViewHolderBinder<Cart>).bind(dataDiffer.currentList[position])
         }
 
     }
@@ -61,69 +60,69 @@ class CartListAdapter(private val cartListener: CartListener? = null) :
     class CartViewHolder(
         private val binding: ItemCartCatalogBinding,
         private val cartListener: CartListener?
-    ) : RecyclerView.ViewHolder(binding.root), ViewHolderBinder<CartCatalog> {
-        override fun bind(item: CartCatalog) {
+    ) : RecyclerView.ViewHolder(binding.root), ViewHolderBinder<Cart> {
+        override fun bind(item: Cart) {
             setCartData(item)
             setCartNotes(item)
             setClickListeners(item)
         }
 
-        private fun setCartData(item: CartCatalog) {
+        private fun setCartData(item: Cart) {
             with(binding) {
-                binding.ivCatalogImage.load(item.catalog.image) {
+                binding.ivCatalogImage.load(item.catalogImgUrl) {
                     crossfade(true)
                 }
-                tvCatalogCount.text = item.cart.itemQuantity.toString()
-                tvCatalogName.text = item.catalog.name
-                tvCatalogPrice.text = (item.cart.itemQuantity * item.catalog.price).toString()
+                tvCatalogCount.text = item.itemQuantity.toString()
+                tvCatalogName.text = item.catalogName
+                tvCatalogPrice.text = (item.itemQuantity * item.catalogPrice).toString()
             }
         }
 
-        private fun setCartNotes(item: CartCatalog) {
-            binding.etNotesItem.setText(item.cart.itemNotes)
+        private fun setCartNotes(item: Cart) {
+            binding.etNotesItem.setText(item.itemNotes)
             binding.etNotesItem.doneEditing {
                 binding.etNotesItem.clearFocus()
-                val newItem = item.cart.copy().apply {
+                val newItem = item.copy().apply {
                     itemNotes = binding.etNotesItem.text.toString().trim()
                 }
                 cartListener?.onUserDoneEditingNotes(newItem)
             }
         }
 
-        private fun setClickListeners(item: CartCatalog) {
+        private fun setClickListeners(item: Cart) {
             with(binding) {
-                ivMinus.setOnClickListener { cartListener?.onMinusTotalItemCartClicked(item.cart) }
-                ivPlus.setOnClickListener { cartListener?.onPlusTotalItemCartClicked(item.cart) }
-                ivRemoveCart.setOnClickListener { cartListener?.onRemoveCartClicked(item.cart) }
+                ivMinus.setOnClickListener { cartListener?.onMinusTotalItemCartClicked(item) }
+                ivPlus.setOnClickListener { cartListener?.onPlusTotalItemCartClicked(item) }
+                ivRemoveCart.setOnClickListener { cartListener?.onRemoveCartClicked(item) }
             }
         }
     }
 
     class CartOrderViewHolder(
         private val binding: ItemCartCatalogOrderBinding,
-    ) : RecyclerView.ViewHolder(binding.root), ViewHolderBinder<CartCatalog> {
-        override fun bind(item: CartCatalog) {
+    ) : RecyclerView.ViewHolder(binding.root), ViewHolderBinder<Cart> {
+        override fun bind(item: Cart) {
             setCartData(item)
             setCartNotes(item)
         }
 
-        private fun setCartData(item: CartCatalog) {
+        private fun setCartData(item: Cart) {
             with(binding) {
-                binding.ivProductImage.load(item.catalog.image) {
+                binding.ivProductImage.load(item.catalogImgUrl) {
                     crossfade(true)
                 }
                 tvTotalQuantity.text =
                     itemView.rootView.context.getString(
                         R.string.total_quantity,
-                        item.cart.itemQuantity.toString()
+                        item.itemQuantity.toString()
                     )
-                tvProductName.text = item.catalog.name
-                tvProductPrice.text = (item.cart.itemQuantity * item.catalog.price).toString()
+                tvProductName.text = item.catalogName
+                tvProductPrice.text = (item.itemQuantity * item.catalogPrice).toString()
             }
         }
 
-        private fun setCartNotes(item: CartCatalog) {
-            binding.tvNotes.text = item.cart.itemNotes
+        private fun setCartNotes(item: Cart) {
+            binding.tvNotes.text = item.itemNotes
         }
 
     }

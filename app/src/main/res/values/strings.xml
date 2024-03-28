@@ -31,4 +31,15 @@
     <string name="text_rp0">Rp0</string>
     <string name="total_quantity">x%s</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="text_title_order_information">Konfirmasi Pesanan</string>
+    <string name="text_delivery_method_title">Metode Pengiriman</string>
+    <string name="text_take_of">Ambil Sendiri</string>
+    <string name="text_delivery">Dikirim ajah</string>
+    <string name="text_payment_method">Metode Pembayaran</string>
+    <string name="text_cash">Tunai</string>
+    <string name="text_e_wallet">Dompet Digital</string>
+    <string name="text_title_shopping_sumary">Ringkasan Pembayaran</string>
+    <string name="text_checkout_button">Pesan Sekarang</string>
+    <string name="tf_name">Pacar Virtual, blm perna ketemu</string>
+    <string name="tf_email">MantuIdaman@gmail.com</string>
 </resources>

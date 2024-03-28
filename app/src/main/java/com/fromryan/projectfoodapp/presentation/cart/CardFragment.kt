@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.core.view.isVisible
+import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.data.datasource.cart.CartDataSource
 import com.fromryan.projectfoodapp.data.datasource.cart.CartDatabaseDataSource
 import com.fromryan.projectfoodapp.data.model.Cart
@@ -79,37 +80,37 @@ class CardFragment : Fragment() {
     }
 
     private fun setupList() {
-//        binding.rvCart.itemAnimator = null
-//        binding.rvCart.adapter = adapter
+        binding.rvCart.itemAnimator = null
+        binding.rvCart.adapter = adapter
     }
 
     private fun observeData() {
-        viewModel.cartList.observe(viewLifecycleOwner) {
+        viewModel.getAllCarts().observe(viewLifecycleOwner) {
             it.proceedWhen(doOnSuccess = { result ->
                 binding.layoutState.root.isVisible = false
                 binding.layoutState.pbLoading.isVisible = false
-//                binding.layoutState.tvError.isVisible = false
+                binding.layoutState.ivError.isVisible = false
                 binding.rvCart.isVisible = true
-                result.payload?.let { (carts, totalPrice) ->
-                    adapter.submitData(carts)
+                result.payload?.let { (cart, totalPrice) ->
+                    adapter.submitData(cart)
                     binding.tvTotalPrice.text = totalPrice.formatToIDRCurrency()
                 }
             }, doOnLoading = {
                 binding.layoutState.root.isVisible = true
                 binding.layoutState.pbLoading.isVisible = true
-//                binding.layoutState.tvError.isVisible = false
+                binding.layoutState.ivError.isVisible = false
                 binding.rvCart.isVisible = false
             }, doOnError = { err ->
                 binding.layoutState.root.isVisible = true
                 binding.layoutState.pbLoading.isVisible = false
-//                binding.layoutState.tvError.isVisible = true
-//                binding.layoutState.tvError.text = err.exception?.message.orEmpty()
+                binding.layoutState.ivError.isVisible = true
+                binding.layoutState.ivError.setImageResource(R.drawable.iv_empty_display)
                 binding.rvCart.isVisible = false
             }, doOnEmpty = { data ->
                 binding.layoutState.root.isVisible = true
                 binding.layoutState.pbLoading.isVisible = false
-//                binding.layoutState.tvError.isVisible = true
-//                binding.layoutState.tvError.text = getString(R.string.text_cart_is_empty)
+                binding.layoutState.ivError.isVisible = true
+                binding.layoutState.ivError.setImageResource(R.drawable.iv_empty_display)
                 data.payload?.let { (_, totalPrice) ->
                     binding.tvTotalPrice.text = totalPrice.formatToIDRCurrency()
                 }
