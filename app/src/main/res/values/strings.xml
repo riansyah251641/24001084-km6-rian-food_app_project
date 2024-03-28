@@ -29,5 +29,6 @@
     <string name="add_to_cart_failed">Yah Gagal :)</string>
     <string name="loading">Please Wait</string>
     <string name="text_rp0">Rp0</string>
+    <string name="total_quantity">x%s</string>
     <string name="edit_profile">Edit Profile</string>
 </resources>

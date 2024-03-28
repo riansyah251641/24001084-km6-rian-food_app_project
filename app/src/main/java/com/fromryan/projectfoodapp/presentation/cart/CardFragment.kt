@@ -1,34 +1,121 @@
 package com.fromryan.projectfoodapp.presentation.cart
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fromryan.projectfoodapp.R
+import androidx.fragment.app.viewModels
+import androidx.core.view.isVisible
+import com.fromryan.projectfoodapp.data.datasource.cart.CartDataSource
+import com.fromryan.projectfoodapp.data.datasource.cart.CartDatabaseDataSource
+import com.fromryan.projectfoodapp.data.model.Cart
+import com.fromryan.projectfoodapp.data.repository.CartRepository
+import com.fromryan.projectfoodapp.data.repository.CartRepositoryImpl
+import com.fromryan.projectfoodapp.data.source.lokal.database.AppDatabase
 import com.fromryan.projectfoodapp.databinding.FragmentCardBinding
+import com.fromryan.projectfoodapp.presentation.checkout.CheckoutActivity
+import com.fromryan.projectfoodapp.presentation.common.adapter.CartListAdapter
+import com.fromryan.projectfoodapp.presentation.common.adapter.CartListener
+import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
+import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
+import com.fromryan.projectfoodapp.utils.hideKeyboard
+import com.fromryan.projectfoodapp.utils.proceedWhen
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CardFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CardFragment : Fragment() {
 
-    private lateinit var binding : FragmentCardBinding
+    private lateinit var binding: FragmentCardBinding
+
+    private val viewModel: CardViewModel by viewModels {
+        val database = AppDatabase.getInstance(requireContext())
+        val cartDao = database.cartDao()
+        val cartDataSource: CartDataSource = CartDatabaseDataSource(cartDao)
+        val repo: CartRepository = CartRepositoryImpl(cartDataSource)
+        GenericViewModelFactory.create(CardViewModel(repo))
+    }
+
+    private val adapter: CartListAdapter by lazy {
+        CartListAdapter(object : CartListener {
+            override fun onPlusTotalItemCartClicked(cart: Cart) {
+                viewModel.increaseCart(cart)
+            }
+
+            override fun onMinusTotalItemCartClicked(cart: Cart) {
+                viewModel.decreaseCart(cart)
+            }
+
+            override fun onRemoveCartClicked(cart: Cart) {
+                viewModel.removeCart(cart)
+            }
+
+            override fun onUserDoneEditingNotes(cart: Cart) {
+                viewModel.setCartNotes(cart)
+                hideKeyboard()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentCardBinding.inflate(layoutInflater,container,false)
+    ): View {
+        binding = FragmentCardBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupList()
+        observeData()
+        setClickListener()
+    }
+
+    private fun setClickListener() {
+        binding.btnCheckout.setOnClickListener {
+            context?.startActivity(Intent(requireContext(), CheckoutActivity::class.java))
+        }
+    }
+
+    private fun setupList() {
+//        binding.rvCart.itemAnimator = null
+//        binding.rvCart.adapter = adapter
+    }
+
+    private fun observeData() {
+        viewModel.cartList.observe(viewLifecycleOwner) {
+            it.proceedWhen(doOnSuccess = { result ->
+                binding.layoutState.root.isVisible = false
+                binding.layoutState.pbLoading.isVisible = false
+//                binding.layoutState.tvError.isVisible = false
+                binding.rvCart.isVisible = true
+                result.payload?.let { (carts, totalPrice) ->
+                    adapter.submitData(carts)
+                    binding.tvTotalPrice.text = totalPrice.formatToIDRCurrency()
+                }
+            }, doOnLoading = {
+                binding.layoutState.root.isVisible = true
+                binding.layoutState.pbLoading.isVisible = true
+//                binding.layoutState.tvError.isVisible = false
+                binding.rvCart.isVisible = false
+            }, doOnError = { err ->
+                binding.layoutState.root.isVisible = true
+                binding.layoutState.pbLoading.isVisible = false
+//                binding.layoutState.tvError.isVisible = true
+//                binding.layoutState.tvError.text = err.exception?.message.orEmpty()
+                binding.rvCart.isVisible = false
+            }, doOnEmpty = { data ->
+                binding.layoutState.root.isVisible = true
+                binding.layoutState.pbLoading.isVisible = false
+//                binding.layoutState.tvError.isVisible = true
+//                binding.layoutState.tvError.text = getString(R.string.text_cart_is_empty)
+                data.payload?.let { (_, totalPrice) ->
+                    binding.tvTotalPrice.text = totalPrice.formatToIDRCurrency()
+                }
+                binding.rvCart.isVisible = false
+            })
+        }
     }
 
 }
