@@ -11,6 +11,7 @@ import com.fromryan.projectfoodapp.data.repository.CartRepository
 import com.fromryan.projectfoodapp.data.repository.CartRepositoryImpl
 import com.fromryan.projectfoodapp.data.source.lokal.database.AppDatabase
 import com.fromryan.projectfoodapp.databinding.ActivityCheckoutBinding
+import com.fromryan.projectfoodapp.presentation.checkout.adapter.PriceListAdapter
 import com.fromryan.projectfoodapp.presentation.common.adapter.CartListAdapter
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
@@ -35,7 +36,11 @@ class CheckoutActivity : AppCompatActivity() {
         CartListAdapter()
     }
 
+private val priceItemAdapter: PriceListAdapter by lazy {
+    PriceListAdapter{
 
+    }
+}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -45,10 +50,11 @@ class CheckoutActivity : AppCompatActivity() {
 
     private fun setupList() {
         binding.layoutContent.rvCart.adapter = adapter
+        binding.layoutContent.rvShoppingSummary.adapter = priceItemAdapter
     }
     private fun observeData() {
-        viewModel.cartList.observe(this) {
-            it.proceedWhen(doOnSuccess = { result ->
+        viewModel.checkoutData.observe(this) {result ->
+            result.proceedWhen(doOnSuccess = { result ->
                 binding.layoutState.root.isVisible = false
                 binding.layoutState.pbLoading.isVisible = false
                 binding.layoutState.ivError.isVisible = false

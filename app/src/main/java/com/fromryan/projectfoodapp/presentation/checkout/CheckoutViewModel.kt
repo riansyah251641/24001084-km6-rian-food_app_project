@@ -6,5 +6,5 @@ import com.fromryan.projectfoodapp.data.repository.CartRepository
 import kotlinx.coroutines.Dispatchers
 
 class CheckoutViewModel(private val cartRepository: CartRepository) : ViewModel() {
-    val cartList = cartRepository.getUserCartData().asLiveData(Dispatchers.IO)
+    val checkoutData = cartRepository.getUserCartData().asLiveData(Dispatchers.IO)
 }

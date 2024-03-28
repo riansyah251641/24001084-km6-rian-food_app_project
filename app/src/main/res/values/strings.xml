@@ -42,4 +42,5 @@
     <string name="text_checkout_button">Pesan Sekarang</string>
     <string name="tf_name">Pacar Virtual, blm perna ketemu</string>
     <string name="tf_email">MantuIdaman@gmail.com</string>
+    <string name="btn_add_to_cart">add to cart</string>
 </resources>
