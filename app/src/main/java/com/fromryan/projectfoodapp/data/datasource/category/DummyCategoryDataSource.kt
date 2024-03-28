@@ -1,6 +1,6 @@
-package com.fromryan.projectfoodapp.data.datasource
+package com.fromryan.projectfoodapp.data.datasource.category
 
-import com.fromryan.projectfoodapp.R
+import com.fromryan.projectfoodapp.data.datasource.category.DataSourceFoodCategory
 import com.fromryan.projectfoodapp.data.model.Category
 
 class DummyCategoryDataSource : DataSourceFoodCategory {

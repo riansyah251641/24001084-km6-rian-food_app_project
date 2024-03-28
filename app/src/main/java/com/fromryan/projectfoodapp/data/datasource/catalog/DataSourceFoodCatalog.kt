@@ -1,4 +1,4 @@
-package com.fromryan.projectfoodapp.data.datasource
+package com.fromryan.projectfoodapp.data.datasource.catalog
 
 import com.fromryan.projectfoodapp.data.model.Catalog
 

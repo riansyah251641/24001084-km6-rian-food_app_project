@@ -2,9 +2,11 @@ package com.fromryan.projectfoodapp.data.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.util.UUID
 
 @Parcelize
 data class Catalog (
+    var id: String? = UUID.randomUUID().toString(),
     var category: String,
     var name: String,
     var description: String,

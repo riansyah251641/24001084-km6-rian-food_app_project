@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.fromryan.projectfoodapp.R
-import com.fromryan.projectfoodapp.data.datasource.DummyCatalogDataSource
-import com.fromryan.projectfoodapp.data.datasource.DummyCategoryDataSource
+import com.fromryan.projectfoodapp.data.datasource.catalog.DummyCatalogDataSource
+import com.fromryan.projectfoodapp.data.datasource.category.DummyCategoryDataSource
 import com.fromryan.projectfoodapp.data.model.Catalog
 import com.fromryan.projectfoodapp.data.repository.CatalogRepository
 import com.fromryan.projectfoodapp.data.repository.CatalogRepositoryImpl
@@ -105,6 +105,7 @@ class HomeFragment : Fragment() {
     private fun navigateToDetail(item: Catalog) {
         DetailFoodActivity.startActivity(
             requireContext(), Catalog(
+                item.id,
                 item.category,
                 item.name,
                 item.description,
