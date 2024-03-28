@@ -1,6 +1,6 @@
 package com.fromryan.projectfoodapp.data.repository
 
-import com.fromryan.projectfoodapp.data.datasource.DataSourceFoodCatalog
+import com.fromryan.projectfoodapp.data.datasource.catalog.DataSourceFoodCatalog
 import com.fromryan.projectfoodapp.data.model.Catalog
 
 interface CatalogRepository {

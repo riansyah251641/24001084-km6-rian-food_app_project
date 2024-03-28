@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -55,6 +56,14 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation ("androidx.core:core-splashscreen:1.0.1")
 
+//    room
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+
+//    coroutine
+    implementation(libs.coroutine.core)
+    implementation(libs.coroutine.android)
+    
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

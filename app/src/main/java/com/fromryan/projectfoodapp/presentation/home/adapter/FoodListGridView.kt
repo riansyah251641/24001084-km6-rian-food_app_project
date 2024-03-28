@@ -6,6 +6,7 @@ import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.data.base.ViewHolderBinder
 import com.fromryan.projectfoodapp.data.model.Catalog
 import com.fromryan.projectfoodapp.databinding.ItemFoodGridBinding
+import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -14,10 +15,6 @@ class FoodListGridView (
     private val listener: OnItemClickedListener<Catalog>
     ): RecyclerView.ViewHolder(binding.root), ViewHolderBinder<Catalog> {
 
-        fun Double.formatToIDRCurrency(): String {
-            val formatter = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-            return formatter.format(this)
-        }
         override fun bind(item: Catalog) {
             item.let {
                 binding.ivFoodPhoto.load(it.image){

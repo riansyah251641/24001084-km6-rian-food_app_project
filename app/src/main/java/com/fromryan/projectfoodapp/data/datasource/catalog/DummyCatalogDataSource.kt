@@ -1,7 +1,7 @@
-package com.fromryan.projectfoodapp.data.datasource
+package com.fromryan.projectfoodapp.data.datasource.catalog
 
+import com.fromryan.projectfoodapp.data.datasource.catalog.DataSourceFoodCatalog
 import com.fromryan.projectfoodapp.data.model.Catalog
-import com.fromryan.projectfoodapp.data.model.Category
 
 class DummyCatalogDataSource : DataSourceFoodCatalog {
     override fun getFoodCatalogItem(): List<Catalog> {
