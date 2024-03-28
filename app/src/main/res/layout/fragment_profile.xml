@@ -58,23 +58,17 @@
             android:layout_marginHorizontal="14dp"
             android:layout_height="wrap_content">
 
-            <FrameLayout
-                android:id="@+id/fl_image_profile"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:id="@+id/iv_profile"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center"
                     android:src="@drawable/iv_profile_picture"
                     />
-            </FrameLayout>
 
             <TextView
                 android:id="@+id/tv_name_tabel_profile"
@@ -84,14 +78,16 @@
                 android:text="@string/form_username_profile"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/fl_image_profile" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_name_text_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_rectangle_white_12"
-                android:hint="Nama Lengkap"
+                android:enabled="false"
+                android:text="@string/tf_name"
+                android:textColor="@color/text_semibold"
                 android:layout_marginHorizontal="8dp"
                 android:paddingHorizontal="14dp"
                 android:textColorHint="@color/text_bold"
@@ -109,12 +105,14 @@
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/et_name_text_profile" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email_text_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_rectangle_white_12"
-                android:hint="@string/email_profile_hint"
+                android:enabled="false"
+                android:text="@string/tf_email"
+                android:textColor="@color/text_semibold"
                 android:layout_marginBottom="32dp"
                 android:layout_marginHorizontal="8dp"
                 android:paddingHorizontal="14dp"
@@ -133,12 +131,14 @@
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/et_email_text_profile" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_nomor_text_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:enabled="false"
                 android:background="@drawable/bg_rectangle_white_12"
-                android:hint="@string/et_nomor_profile_hint"
+                android:text="082144445148"
+                android:textColor="@color/text_semibold"
                 android:layout_marginBottom="32dp"
                 android:layout_marginHorizontal="8dp"
                 android:paddingHorizontal="14dp"
@@ -154,7 +154,7 @@
     android:id="@+id/btn_edit_profile"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:text="@string/edit_profile"
+    android:text="@string/edit_profile"
     android:textColor="@color/bg_light"
     android:textSize="14sp"
     android:textStyle="bold"
