@@ -25,9 +25,10 @@
     <string name="button_cart_place_order">PLACE ORDER</string>
     <string name="text_delivery_address">Alamat Pengiriman</string>
     <string name="text_hint_address_input">ex: jln in aja dulu sapa tau bisa</string>
-    <string name="text_add_to_cart_success" >Berhasil yey, silahkan check di your cart</string>
+    <string name="text_add_to_cart_success" >Berhasil yey</string>
     <string name="add_to_cart_failed">Yah Gagal :)</string>
     <string name="loading">Please Wait</string>
+    <string name="text_rp0">Rp0</string>
     <string name="total_quantity">x%s</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="text_title_order_information">Konfirmasi Pesanan</string>
@@ -41,7 +42,7 @@
     <string name="text_checkout_button">Pesan Sekarang</string>
     <string name="tf_name">Pacar Virtual, blm perna ketemu</string>
     <string name="tf_email">MantuIdaman@gmail.com</string>
-    <string name="btn_add_to_cart">Add to Cart</string>
+    <string name="btn_add_to_cart">add to cart</string>
     <string name="text_edit_profile">Edit Profile</string>
     <string name="text_save">SAVE</string>
 </resources>
