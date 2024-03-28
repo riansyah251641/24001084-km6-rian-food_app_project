@@ -72,7 +72,7 @@ private fun setProfileData(item: Catalog) {
     binding.tvDeskripsi.text = item.description
     binding.tvPrice.text=item.price.formatToIDRCurrency()
     binding.tvIsiLokasi.text=item.location
-    binding.btnDetailOrder.text= getString(R.string.text_rp0)
+    binding.btnDetailOrder.text= item.price.formatToIDRCurrency()
     priceItem = item.price
     linkToMaps = item.location
     binding.ivBannerDetail.load(item.image) {
@@ -80,7 +80,6 @@ private fun setProfileData(item: Catalog) {
         error(R.mipmap.ic_launcher)
     }
 }
-
 
     private fun addProductToCart() {
         viewModel.addToCart().observe(this) {

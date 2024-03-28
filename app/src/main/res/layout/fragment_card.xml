@@ -9,18 +9,12 @@
         android:id="@+id/ll_action_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginHorizontal="20dp"
+        android:background="@color/button_yellow"
         android:elevation="8dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/ic_arrow_left"
-            android:padding="8dp"
-            android:background="@drawable/bg_oval_white" />
         <TextView
             android:id="@+id/tv_title_toolbar"
             style="@style/TextAppearance.Material3.TitleMedium"
@@ -28,27 +22,27 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="8dp"
             android:text="@string/header_fragment_cart"
+            android:textColor="@color/bg_light"
             android:textSize="18sp"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:layout_weight="8"
             android:textStyle="bold" />
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="DONE"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:textColor="@color/base_green" />
+
     </LinearLayout>
 
+    <include
+        android:id="@+id/layout_state"
+        layout="@layout/layout_content_empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="18dp"
         android:clipToPadding="false"
         android:orientation="vertical"
         android:paddingBottom="16dp"
@@ -57,13 +51,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ll_action_bar"
         tools:listitem="@layout/item_cart_catalog" />
 
-    <include
-        android:id="@+id/layout_state"
-        layout="@layout/layout_content_empty_state"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/cv_section_checkout"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_section_checkout"
@@ -156,6 +143,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.cardview.widget.CardView>
 

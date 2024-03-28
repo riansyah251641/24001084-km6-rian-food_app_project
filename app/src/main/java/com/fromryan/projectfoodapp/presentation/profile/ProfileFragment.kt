@@ -14,6 +14,7 @@ import com.fromryan.projectfoodapp.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
     private lateinit var binding : FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModels()
+    var count = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,8 +49,15 @@ class ProfileFragment : Fragment() {
 
     private fun setClickListener() {
         binding.btnEditProfile.setOnClickListener {
+            count += 1
             viewModel.changeEditMode()
+            if (count %2 == 0){
+                binding.btnEditProfile.setText(getString(R.string.text_edit_profile))
+            }else{
+                binding.btnEditProfile.setText(getString(R.string.text_save))
+            }
         }
+
     }
     private fun changeEditMode() {
         viewModel.isEditMode.observe(viewLifecycleOwner) {

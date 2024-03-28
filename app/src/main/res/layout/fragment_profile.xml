@@ -33,16 +33,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-
-                <ImageView
-                    android:id="@+id/fr_profile"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:padding="10dp"
-                    android:background="@drawable/bg_oval_white"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_edit" />
-
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -83,7 +73,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_name_text_profile"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:background="@drawable/bg_rectangle_white_12"
                 android:enabled="false"
                 android:text="@string/tf_name"
@@ -108,7 +98,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email_text_profile"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:background="@drawable/bg_rectangle_white_12"
                 android:enabled="false"
                 android:text="@string/tf_email"
@@ -134,7 +124,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_nomor_text_profile"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:enabled="false"
                 android:background="@drawable/bg_rectangle_white_12"
                 android:text="082144445148"

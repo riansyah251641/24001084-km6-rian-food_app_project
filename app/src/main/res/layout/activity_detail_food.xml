@@ -213,7 +213,7 @@
         android:layout_width="wrap_content"
         android:layout_weight="5"
         android:layout_height="wrap_content"
-        tools:text="add to cart"
+        android:text="@string/btn_add_to_cart"
         android:textColor="@color/bg_light"
         android:background="@drawable/bg_rectangle_yellow_16"
         android:textSize="14sp"

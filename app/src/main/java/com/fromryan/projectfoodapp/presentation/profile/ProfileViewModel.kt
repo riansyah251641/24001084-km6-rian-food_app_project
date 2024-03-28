@@ -10,8 +10,8 @@ class ProfileViewModel : ViewModel() {
         Profile(
             name = "Muhammad Febriansyah",
             email = "work.rsyah1641@gmail.com",
-            profileImg = "https://avatars.githubusercontent.com/u/21256595?v=4",
-            nohp = "hermasyp",
+            profileImg = "https://i.pinimg.com/564x/19/99/e0/1999e052d1f7263e4674294285f7c576.jpg",
+            nohp = "082144445148",
         )
     )
 
