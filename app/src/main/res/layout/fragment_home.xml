@@ -90,7 +90,7 @@
             android:id="@+id/iv_banner_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/image_banner_main_activity"
+            android:src="@drawable/iv_banner_main_activity"
             android:scaleType="centerCrop"
             />
 
