@@ -43,4 +43,6 @@
     <string name="tf_name">Pacar Virtual, blm perna ketemu</string>
     <string name="tf_email">MantuIdaman@gmail.com</string>
     <string name="btn_add_to_cart">add to cart</string>
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_save">SAVE</string>
 </resources>
