@@ -1,5 +1,3 @@
-package com.fromryan.projectfoodapp.presentation.checkout.adapter
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -8,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fromryan.projectfoodapp.data.model.PriceItem
 import com.fromryan.projectfoodapp.databinding.ItemCheckoutFoodListBinding
 import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
-
 
 class PriceListAdapter(private val itemClick: (PriceItem) -> Unit) :
     RecyclerView.Adapter<PriceListAdapter.PriceItemViewHolder>() {
@@ -63,4 +60,5 @@ class PriceListAdapter(private val itemClick: (PriceItem) -> Unit) :
 
         }
     }
+
 }

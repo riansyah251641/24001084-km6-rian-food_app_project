@@ -63,7 +63,9 @@ dependencies {
 //    coroutine
     implementation(libs.coroutine.core)
     implementation(libs.coroutine.android)
-    
+
+//    lottie
+    implementation("com.airbnb.android:lottie:3.4.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
