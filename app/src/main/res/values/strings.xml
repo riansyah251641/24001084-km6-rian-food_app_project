@@ -25,7 +25,7 @@
     <string name="button_cart_place_order">PLACE ORDER</string>
     <string name="text_delivery_address">Alamat Pengiriman</string>
     <string name="text_hint_address_input">ex: jln in aja dulu sapa tau bisa</string>
-    <string name="text_add_to_cart_success" >Berhasil yey</string>
+    <string name="text_add_to_cart_success" >Berhasil yey, silahkan di checkout di cart</string>
     <string name="add_to_cart_failed">Yah Gagal :)</string>
     <string name="loading">Please Wait</string>
     <string name="text_rp0">Rp0</string>
@@ -52,16 +52,7 @@
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
+" />
 "/>
 </string>
     <string name="teks_loktion_detail">jln semolowari tengah III no 16, Surabaya, Jawa Timur, 60119</string>

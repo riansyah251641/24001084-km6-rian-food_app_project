@@ -10,7 +10,7 @@
         android:id="@+id/ll_action_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
+        android:background="@color/button_yellow"
         android:elevation="8dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -18,8 +18,10 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/bg_oval_white"
+            android:padding="6dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:src="@drawable/ic_arrow_left" />
@@ -31,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:textSize="18sp"
+            android:textColor="@color/bg_light"
             android:text="@string/text_title_order_information" />
     </LinearLayout>
 
@@ -75,7 +78,8 @@
                 android:layout_marginEnd="16dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:paddingRight="24dp"
+                android:paddingEnd="24dp"
+                android:textSize="16sp"
                 android:gravity="center|end"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_checkout"
