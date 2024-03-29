@@ -72,10 +72,9 @@ class CartListAdapter(private val cartListener: CartListener? = null) :
                 binding.ivCatalogImage.load(item.catalogImgUrl) {
                     crossfade(true)
                 }
-                val count = item.itemQuantity + 1
-                tvCatalogCount.text = count.toString()
+                tvCatalogCount.text = item.itemQuantity.toString()
                 tvCatalogName.text = item.catalogName
-                tvCatalogPrice.text = (count * item.catalogPrice).toString()
+                tvCatalogPrice.text = (item.itemQuantity * item.catalogPrice).toString()
             }
         }
 
