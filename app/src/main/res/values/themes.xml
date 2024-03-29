@@ -63,7 +63,7 @@
     <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/button_yellow</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/iv_logo_app</item>
-        <item name="windowSplashScreenAnimationDuration">5000</item>
+        <item name="windowSplashScreenAnimationDuration">6000</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/base_green</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.myAppSplashScreen</item>
     </style>
