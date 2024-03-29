@@ -58,4 +58,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec li
 </string>
     <string name="teks_loktion_detail">jln semolowari tengah III no 16, Surabaya, Jawa Timur, 60119</string>
     <string name="text_titile_lokasi_detail">Lokasi</string>
+    <string name="textto_dark_mode">Change Theme</string>
+    <string name="text_change_to_light_mode">Change Theme</string>
 </resources>

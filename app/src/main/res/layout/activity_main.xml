@@ -16,7 +16,6 @@
         app:itemTextColor="@color/base_yellow"
         app:itemIconTint="@color/base_yellow"
         app:itemActiveIndicatorStyle="@color/bg_dark"
-        app:itemBackground="@color/bg_light"
         app:itemIconSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -35,15 +34,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/main_navigation" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switchMode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
-        android:thumb="@drawable/bg_switch_mode_thumb"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:track="@drawable/bg_switch_mode_track" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

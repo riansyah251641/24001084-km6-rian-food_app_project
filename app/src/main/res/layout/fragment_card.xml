@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/button_yellow"
+        android:background="?attr/colorPrimary"
         android:layout_height="?attr/actionBarSize"
         android:gravity="center_vertical"
         android:paddingHorizontal="18dp"
@@ -81,7 +81,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:paddingBottom="16dp"
-                android:textColor="@color/text_desk"
                 android:text="@string/text_button_cart_tabel_title"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent" />
@@ -97,7 +96,6 @@
                 android:paddingTop="4dp"
                 android:textSize="14sp"
                 android:text="@string/text_total"
-                android:textColor="@color/text_desk"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_label_information_order" />
 
@@ -105,7 +103,6 @@
                 android:id="@+id/tv_total_price"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="@color/text_bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"

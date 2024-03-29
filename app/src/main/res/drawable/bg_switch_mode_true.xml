@@ -15,7 +15,7 @@
 </item>
 
     <item
-        android:drawable="@drawable/ic_night_mode"
+        android:drawable="@drawable/ic_light_mode"
         android:top="8dp"
         android:bottom="8dp"
         android:right="8dp"

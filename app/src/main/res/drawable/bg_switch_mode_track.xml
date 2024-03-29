@@ -13,7 +13,7 @@
     <item
         android:state_checked="false" >
         <shape android:shape="rectangle">
-            <solid android:color="@color/base_green"/>
+            <solid android:color="@color/button_yellow"/>
             <size android:height="8dp" />
             <corners android:radius="100dp" />
         </shape>
