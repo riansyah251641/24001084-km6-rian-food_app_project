@@ -12,6 +12,7 @@
         android:roundIcon="@drawable/iv_logo_app"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:enableOnBackInvokedCallback="true"
         android:theme="@style/Theme.App.SplashScreen"
         android:name=".App"
         tools:targetApi="31">
