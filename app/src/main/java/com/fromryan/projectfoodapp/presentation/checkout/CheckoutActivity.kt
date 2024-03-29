@@ -1,7 +1,12 @@
 package com.fromryan.projectfoodapp.presentation.checkout
 
 import PriceListAdapter
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Window
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -100,6 +105,25 @@ class CheckoutActivity : AppCompatActivity() {
         binding.ivBack.setOnClickListener {
             onBackPressed()
         }
+        binding.btnCheckout.setOnClickListener{
+            customDialog()
+        }
     }
+
+    private fun customDialog(){
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.layout_dialog_checkout)
+
+        val btnClose = dialog.findViewById<Button>(R.id.iv_btn_close)
+        btnClose.setOnClickListener{
+            dialog.dismiss()
+            finish()
+            
+        }
+        dialog.show()
+    }
+
 
 }
