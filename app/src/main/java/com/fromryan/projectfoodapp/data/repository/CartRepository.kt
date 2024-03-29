@@ -87,7 +87,7 @@ class CartRepositoryImpl(private val cartDataSource: CartDataSource) : CartRepos
                 val affectedRow = cartDataSource.insertCart(
                     CartEntity(
                         catalogId = catalogId,
-                        itemQuantity = quantity,
+                        itemQuantity = quantity +1,
                         catalogName = catalog.name,
                         catalogImgUrl = catalog.image,
                         catalogPrice = catalog.price,

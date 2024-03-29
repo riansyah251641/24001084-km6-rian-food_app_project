@@ -45,9 +45,11 @@
     <string name="text_edit_profile">Edit Profile</string>
     <string name="text_save">SAVE</string>
     <string name="text_dialogg_checkout">checkout berhasil</string>
-    <string name="text_go_to_home">ke Home</string>
-    <string name="text_deskripsi_detail_food">Keterangan Tambahan</string>
-    <string name="text_deskripsi_food">isi dari detail food belum di masukkan untuk datanya, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
+    <string name="text_go_to_home">kembali</string>
+    <string name="text_deskripsi_detail_food">Detail Informasi</string>
+    <string name="text_deskripsi_food">isi dari detail food belum di masukkan untuk datanya,cuman biar bisa di scroll
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
@@ -56,4 +58,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec li
 </string>
     <string name="teks_loktion_detail">jln semolowari tengah III no 16, Surabaya, Jawa Timur, 60119</string>
     <string name="text_titile_lokasi_detail">Lokasi</string>
+    <string name="textto_dark_mode">Change Theme</string>
+    <string name="text_change_to_light_mode">Change Theme</string>
 </resources>

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
@@ -16,13 +15,10 @@ import com.fromryan.projectfoodapp.data.model.Catalog
 import com.fromryan.projectfoodapp.data.repository.CartRepository
 import com.fromryan.projectfoodapp.data.repository.CartRepositoryImpl
 import com.fromryan.projectfoodapp.data.source.lokal.database.AppDatabase
-import com.fromryan.projectfoodapp.databinding.ActivityCheckoutBinding
 import com.fromryan.projectfoodapp.databinding.ActivityDetailFoodBinding
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
 import com.fromryan.projectfoodapp.utils.proceedWhen
-import java.text.NumberFormat
-import java.util.Locale
 
 class DetailFoodActivity : AppCompatActivity() {
 
