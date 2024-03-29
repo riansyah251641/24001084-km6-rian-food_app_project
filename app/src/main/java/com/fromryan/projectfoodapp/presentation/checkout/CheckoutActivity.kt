@@ -106,6 +106,7 @@ class CheckoutActivity : AppCompatActivity() {
             onBackPressed()
         }
         binding.btnCheckout.setOnClickListener{
+            viewModel.deleteAllCarts()
             customDialog()
         }
     }

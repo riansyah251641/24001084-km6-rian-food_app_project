@@ -7,4 +7,5 @@ import kotlinx.coroutines.Dispatchers
 
 class CheckoutViewModel(private val cartRepository: CartRepository) : ViewModel() {
     val checkoutData = cartRepository.getCheckoutData().asLiveData(Dispatchers.IO)
+    fun deleteAllCarts() = cartRepository.deleteAll()
 }
