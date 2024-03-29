@@ -45,4 +45,6 @@
     <string name="btn_add_to_cart">add to cart</string>
     <string name="text_edit_profile">Edit Profile</string>
     <string name="text_save">SAVE</string>
+    <string name="text_dialogg_checkout">Yeyy, jangan lupa di transfer yaa</string>
+    <string name="text_go_to_home">Kembali ke Home</string>
 </resources>

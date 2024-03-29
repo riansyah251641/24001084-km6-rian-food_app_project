@@ -11,6 +11,7 @@ import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.data.datasource.catalog.DummyCatalogDataSource
 import com.fromryan.projectfoodapp.data.datasource.category.DummyCategoryDataSource
 import com.fromryan.projectfoodapp.data.model.Catalog
+import com.fromryan.projectfoodapp.data.model.Category
 import com.fromryan.projectfoodapp.data.repository.CatalogRepository
 import com.fromryan.projectfoodapp.data.repository.CatalogRepositoryImpl
 import com.fromryan.projectfoodapp.data.repository.CategoryRepository
@@ -37,7 +38,6 @@ class HomeFragment : Fragment() {
     GenericViewModelFactory.create(HomeViewModel(categoryRepository,catalogRepository))
 }
     private var isUsingGridMode: Boolean = false
-    private val categoryAdapter = CategoryAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,8 +87,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindCategoryFood() {
+
+        val categoryAdapter = CategoryAdapter()
         binding.rvListOfCategory.apply {
-            adapter = this@HomeFragment.categoryAdapter
+            adapter = categoryAdapter
         }
         categoryAdapter.submitData(viewModel.getFoodListData())
     }
