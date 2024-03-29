@@ -1,15 +1,20 @@
 package com.fromryan.projectfoodapp.presentation.profile
 
+
 import android.os.Bundle
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.databinding.FragmentProfileBinding
+import com.fromryan.projectfoodapp.presentation.main.SharedPreferenceMainManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ProfileFragment : Fragment() {
     private lateinit var binding : FragmentProfileBinding
@@ -29,8 +34,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setClickListener()
         getProfileData()
-        setClickListener()
         changeEditMode()
+        setSwitchMode()
     }
 
 
@@ -44,6 +49,24 @@ class ProfileFragment : Fragment() {
             binding.etNameTextProfile.setText(it.name)
             binding.etNomorTextProfile.setText(it.nohp)
             binding.etEmailTextProfile.setText(it.email)
+        }
+    }
+    private fun setSwitchMode() {
+        val themeTitleList = arrayOf("Light", "Dark", "Auto (System Default)")
+        val sharedPreferencesManager = SharedPreferenceMainManager(requireContext())
+        var checkedTheme = sharedPreferencesManager.theme
+        val  themeDialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Theme")
+            .setPositiveButton("ok"){_,_ ->
+                sharedPreferencesManager.theme = checkedTheme
+                AppCompatDelegate.setDefaultNightMode(sharedPreferencesManager.themeFlag[checkedTheme])
+            }
+            .setSingleChoiceItems(themeTitleList,checkedTheme){_, which ->
+                checkedTheme = which
+            }
+            .setCancelable(false)
+        binding.switchMode.setOnClickListener {
+            themeDialog.show()
         }
     }
 

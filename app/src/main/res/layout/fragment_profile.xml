@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".presentation.profile.ProfileFragment">
+
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/header_profile_fragment"
         android:layout_width="match_parent"
-        android:background="@color/button_yellow"
+        android:background="?attr/colorPrimary"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +40,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:minHeight="800dp"
         android:layout_marginHorizontal="12dp"
         app:layout_constraintTop_toBottomOf="@+id/header_profile_fragment">
@@ -55,7 +56,8 @@
                     android:layout_height="150dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/switchMode"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center"
                     android:src="@drawable/iv_logo_app"
@@ -137,6 +139,18 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_nomor_tabel_profile"/>
 
+            <Button
+                android:id="@+id/switchMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:thumb="@drawable/bg_switch_mode_thumb"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:track="@drawable/bg_switch_mode_track"
+                android:text="@string/textto_dark_mode"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -149,9 +163,10 @@
     android:textColor="@color/bg_light"
     android:textSize="14sp"
     android:textStyle="bold"
-    android:background="@drawable/bg_rectangle_yellow_16"
     app:layout_constraintBottom_toBottomOf="parent"
     android:layout_marginVertical="24dp"
     android:layout_marginHorizontal="48dp"
     />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
