@@ -24,9 +24,8 @@
     <string name="text_button_cart_tabel_title">INFORMATION ORDER</string>
     <string name="button_cart_place_order">PLACE ORDER</string>
     <string name="text_delivery_address">Alamat Pengiriman</string>
-    <string name="text_hint_address_input">ex: jln in aja dulu sapa tau bisa</string>
     <string name="text_add_to_cart_success" >Berhasil yey, silahkan di checkout di cart</string>
-    <string name="add_to_cart_failed">Yah Gagal :)</string>
+    <string name="add_to_cart_failed">Yah Gagal :),harap coba lagi</string>
     <string name="loading">Please Wait</string>
     <string name="text_rp0">Rp0</string>
     <string name="total_quantity">x%s</string>
@@ -45,9 +44,9 @@
     <string name="btn_add_to_cart">add to cart</string>
     <string name="text_edit_profile">Edit Profile</string>
     <string name="text_save">SAVE</string>
-    <string name="text_dialogg_checkout">Yeyy, jangan lupa di transfer yaa</string>
-    <string name="text_go_to_home">Kembali ke Home</string>
-    <string name="text_deskripsi_detail_food">Detail Food</string>
+    <string name="text_dialogg_checkout">checkout berhasil</string>
+    <string name="text_go_to_home">ke Home</string>
+    <string name="text_deskripsi_detail_food">Keterangan Tambahan</string>
     <string name="text_deskripsi_food">isi dari detail food belum di masukkan untuk datanya, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo, nec ultricies justo justo nec libero. Sed auctor justo nec libero ultricies. Nullam euismod, velit ac ultricies consectetur, justo odio tincidunt justo." />

@@ -36,7 +36,7 @@ companion object {
         context.startActivity((intent))
     }
 }
-private var count = 0
+private var count = 1
 private var priceItem: Double = 0.00
 private var linkToMaps: String = ""
 
@@ -57,6 +57,7 @@ private val binding: ActivityDetailFoodBinding by lazy {
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(binding.root)
+    binding.tvCountOrder.text = count.toString()
     getArgumentData()
     clickAction()
 }
