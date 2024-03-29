@@ -1,14 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.cart.CardFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="4dp"
+        android:id="@+id/ll_action_bar" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/button_yellow"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="18dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_title_toolbar"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:text="@string/header_fragment_cart"
+            android:textColor="@color/bg_light"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_weight="8"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <include
+        android:id="@+id/layout_state"
+        layout="@layout/layout_content_empty_state"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginVertical="12dp"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/cv_section_checkout"
+        app:layout_constraintTop_toBottomOf="@+id/ll_action_bar"
+        tools:listitem="@layout/item_cart_catalog" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_section_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="8dp"
+        android:background="@drawable/bg_rectangle_white_16_up"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_information_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+            
+            <TextView
+                android:id="@+id/tv_label_information_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:paddingBottom="16dp"
+                android:textColor="@color/text_desk"
+                android:text="@string/text_button_cart_tabel_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_label_total_price"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:paddingVertical="16dp"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:textSize="14sp"
+                android:text="@string/text_total"
+                android:textColor="@color/text_desk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_label_information_order" />
+
+            <TextView
+                android:id="@+id/tv_total_price"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toEndOf="@id/tv_label_total_price"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_label_total_price"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_label_total_price"
+                tools:text="Rp. 300.000" />
+
+            <Button
+                android:id="@+id/btn_checkout"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="24dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rectangle_yellow_16"
+                android:textStyle="bold"
+                android:textColor="@color/bg_light"
+                android:text="@string/button_cart_place_order"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_label_total_price"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

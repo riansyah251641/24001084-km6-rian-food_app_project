@@ -1,12 +1,9 @@
-package com.fromryan.projectfoodapp.data.datasource
+package com.fromryan.projectfoodapp.data.datasource.catalog
 
+import com.fromryan.projectfoodapp.data.datasource.catalog.DataSourceFoodCatalog
 import com.fromryan.projectfoodapp.data.model.Catalog
 
-interface DataSourceFoodCatalog{
-    fun getFoodCatalogItem(): List<Catalog>
-}
-
-class DataSourceFoodCatalogImpl() : DataSourceFoodCatalog{
+class DummyCatalogDataSource : DataSourceFoodCatalog {
     override fun getFoodCatalogItem(): List<Catalog> {
         return mutableListOf(
             Catalog(

@@ -8,12 +8,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.fromryan.projectfoodapp.R
+import com.fromryan.projectfoodapp.data.datasource.catalog.DummyCatalogDataSource
+import com.fromryan.projectfoodapp.data.datasource.category.DummyCategoryDataSource
 import com.fromryan.projectfoodapp.data.model.Catalog
+import com.fromryan.projectfoodapp.data.model.Category
+import com.fromryan.projectfoodapp.data.repository.CatalogRepository
+import com.fromryan.projectfoodapp.data.repository.CatalogRepositoryImpl
+import com.fromryan.projectfoodapp.data.repository.CategoryRepository
+import com.fromryan.projectfoodapp.data.repository.CategoryRepositoryImpl
 import com.fromryan.projectfoodapp.databinding.FragmentHomeBinding
 import com.fromryan.projectfoodapp.presentation.detailfood.DetailFoodActivity
 import com.fromryan.projectfoodapp.presentation.home.adapter.CategoryAdapter
 import com.fromryan.projectfoodapp.presentation.home.adapter.FoodListAdapter
 import com.fromryan.projectfoodapp.presentation.home.adapter.OnItemClickedListener
+import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -22,9 +30,14 @@ class HomeFragment : Fragment() {
 //    haramm
 //    private val dataSource: DataSourceFoodCatalog by lazy { DataSourceFoodList() }
 //    private val dataSourceCatalog: DataSourceFoodCategory by lazy { DataSourceFoodCategoryImpl() }
-   private val viewModel  : HomeViewModel by viewModels()
+   private val viewModel  : HomeViewModel by viewModels {
+       val catalogDataSource = DummyCatalogDataSource()
+    val catalogRepository: CatalogRepository = CatalogRepositoryImpl(catalogDataSource)
+    val categoryDataSource = DummyCategoryDataSource()
+    val categoryRepository: CategoryRepository = CategoryRepositoryImpl(categoryDataSource)
+    GenericViewModelFactory.create(HomeViewModel(categoryRepository,catalogRepository))
+}
     private var isUsingGridMode: Boolean = false
-    private val categoryAdapter = CategoryAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,8 +87,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindCategoryFood() {
+
+        val categoryAdapter = CategoryAdapter()
         binding.rvListOfCategory.apply {
-            adapter = this@HomeFragment.categoryAdapter
+            adapter = categoryAdapter
         }
         categoryAdapter.submitData(viewModel.getFoodListData())
     }
@@ -92,6 +107,7 @@ class HomeFragment : Fragment() {
     private fun navigateToDetail(item: Catalog) {
         DetailFoodActivity.startActivity(
             requireContext(), Catalog(
+                item.id,
                 item.category,
                 item.name,
                 item.description,
