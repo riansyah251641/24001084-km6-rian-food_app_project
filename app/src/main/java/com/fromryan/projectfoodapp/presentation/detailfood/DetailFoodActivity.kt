@@ -36,7 +36,7 @@ companion object {
         context.startActivity((intent))
     }
 }
-private var count = 1
+private var count = 0
 private var priceItem: Double = 0.00
 private var linkToMaps: String = ""
 
