@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -58,6 +60,7 @@ dependencies {
 
 //    room
     implementation(libs.room.ktx)
+    implementation(libs.firebase.crashlytics)
     ksp(libs.room.compiler)
 
 //    coroutine
