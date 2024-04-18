@@ -8,7 +8,7 @@ import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.data.model.Category
 import com.fromryan.projectfoodapp.databinding.ItemFoodListcategoryBinding
 
-class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(private val itemClick: (Category) -> Unit)  : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     private val data = mutableListOf<Category>()
 
     fun submitData(items : List<Category>){

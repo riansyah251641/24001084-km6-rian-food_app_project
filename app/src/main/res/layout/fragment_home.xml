@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/header_main_fragment"
         android:layout_width="match_parent"
@@ -104,6 +106,17 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_food_listcategory"  />
 
+        <include
+            android:id="@+id/layout_state_category"
+            layout="@layout/layout_content_state"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintBottom_toTopOf="@id/ll_listmenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_banner_main" />
+
         <LinearLayout
             android:id="@+id/ll_listmenu"
             app:layout_constraintTop_toBottomOf="@+id/rv_list_of_category"
@@ -129,7 +142,16 @@
                 android:layout_height="35dp"
                 android:layout_weight="2"
                 android:src="@drawable/ic_list_to_linier" />
+
         </LinearLayout>
+        <include
+            android:id="@+id/layout_state"
+            layout="@layout/layout_content_state"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_listmenu" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list_food"

@@ -1,4 +1,4 @@
-package com.fromryan.projectfoodapp.data.datasource.mapper
+package com.fromryan.projectfoodapp.data.mapper
 
 import com.fromryan.projectfoodapp.data.model.Cart
 import com.fromryan.projectfoodapp.data.source.lokal.database.entity.CartEntity
