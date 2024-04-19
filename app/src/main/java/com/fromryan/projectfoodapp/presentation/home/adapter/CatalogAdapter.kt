@@ -10,10 +10,10 @@ import com.fromryan.projectfoodapp.data.model.Catalog
 import com.fromryan.projectfoodapp.databinding.ItemFoodGridBinding
 import com.fromryan.projectfoodapp.databinding.ItemFoodLinierBinding
 
-class FoodListAdapter (
+class CatalogAdapter (
 
     private val listener: OnItemClickedListener<Catalog>,
-    private val listMode: Int = FoodListAdapter.MODE_LIST
+    private val listMode: Int = MODE_LIST
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         const val MODE_LIST = 0
@@ -67,6 +67,7 @@ class FoodListAdapter (
 
 interface OnItemClickedListener<T> {
     fun onItemClicked(item: T)
+    fun onItemAddToCart(item: T)
 }
 
 
