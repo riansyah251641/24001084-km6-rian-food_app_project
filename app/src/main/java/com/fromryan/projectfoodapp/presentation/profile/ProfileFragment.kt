@@ -13,11 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import coil.load
-import coil.transform.CircleCropTransformation
 import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.data.datasource.auth.AuthDataSource
 import com.fromryan.projectfoodapp.data.datasource.auth.FirebaseAuthDataSource
@@ -30,6 +29,7 @@ import com.fromryan.projectfoodapp.presentation.login.LoginActivity
 import com.fromryan.projectfoodapp.presentation.main.MainActivity
 import com.fromryan.projectfoodapp.presentation.main.SharedPreferenceMainManager
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
+import com.fromryan.projectfoodapp.utils.proceedWhen
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ProfileFragment : Fragment() {
@@ -105,6 +105,7 @@ class ProfileFragment : Fragment() {
                 count += 1
                 viewModel.changeEditMode()
                 if (count % 2 == 0) {
+                    val name = binding.etNameTextProfile.text.toString().trim()
                     binding.btnEditProfile.setText(getString(R.string.text_edit_profile))
                 } else {
                     binding.btnEditProfile.setText(getString(R.string.text_save))
@@ -124,8 +125,10 @@ class ProfileFragment : Fragment() {
                 }
             }
 
-
-
+        binding.tvChangePw.setOnClickListener{
+            changePasswordUser()
+        }
+        binding.btnEditProfile
 
 
 
@@ -136,6 +139,34 @@ class ProfileFragment : Fragment() {
             binding.etNameTextProfile.isEnabled = it
             binding.etEmailTextProfile.isEnabled = it
             binding.etNomorTextProfile.isEnabled = it
+        }
+    }
+
+    private fun changePasswordUser(){
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.layout_dialog_change_password)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        viewModel.changePassword()
+        val backBtn: Button = dialog.findViewById(R.id.btn_back)
+        backBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
+    private fun changeProfileName(fullName: String) {
+        viewModel.changeProfile(fullName).observe(viewLifecycleOwner) {
+            it.proceedWhen(
+                doOnSuccess = {
+                    Toast.makeText(requireContext(), getString(R.string.text_link_edit_profile_success), Toast.LENGTH_SHORT).show()
+                    viewModel.changeEditMode()
+                },
+                doOnError = {
+                    Toast.makeText(requireContext(), getString(R.string.text_link_edit_profile_failed), Toast.LENGTH_SHORT).show()
+                },
+            )
         }
     }
 

@@ -88,6 +88,7 @@
             app:boxCornerRadiusTopEnd="24dp"
             app:boxCornerRadiusTopStart="24dp"
             app:passwordToggleEnabled="true"
+            app:passwordToggleTint="?attr/colorPrimary"
             app:layout_constraintTop_toBottomOf="@id/text_field_email_regist"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -110,6 +111,7 @@
             app:boxCornerRadiusTopEnd="24dp"
             app:boxCornerRadiusTopStart="24dp"
             app:passwordToggleEnabled="true"
+            app:passwordToggleTint="?attr/colorPrimary"
             app:layout_constraintTop_toBottomOf="@id/text_field_password_regist"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">

@@ -80,4 +80,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec li
     <string name="text_dialog_logout">Hanya memastikan, Apakah Anda ingin Logout?</string>
     <string name="text_doalog_logout_back">kembali</string>
     <string name="text_phone_profile">082156450989</string>
+    <string name="text_link_change_password">ubah password</string>
+    <string name="text_link_edit_profile_success">data profile berhasil diedit</string>
+    <string name="text_link_edit_profile_failed">data profile gagal diedit</string>
+    <string name="text_dialog_change_pw">Link untuk mengubah password telah dikirim di email yang terdaftar</string>
+    <string name="text_back">Kembali</string>
+
 </resources>

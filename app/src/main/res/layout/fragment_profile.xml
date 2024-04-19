@@ -39,6 +39,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
@@ -140,8 +141,20 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_nomor_tabel_profile"/>
 
+            <TextView
+                android:id="@+id/tv_change_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_link_change_password"
+                app:layout_constraintTop_toBottomOf="@+id/et_nomor_text_profile"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:textColor="?attr/colorPrimary"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+
 
 <Button
     android:id="@+id/btn_edit_profile"

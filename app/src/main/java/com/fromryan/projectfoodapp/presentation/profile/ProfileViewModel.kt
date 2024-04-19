@@ -17,6 +17,11 @@ class ProfileViewModel(private val repo: UserRepository) : ViewModel() {
         isEditMode.postValue(!currentValue)
     }
 
+    fun changeProfile(fullName: String) = repo.updateProfile(fullName).asLiveData(Dispatchers.IO)
+
+    fun changePassword() {
+        repo.requestChangePasswordByEmail()
+    }
     fun getCurrentUser() = repo.getCurrentUser()
 
 
