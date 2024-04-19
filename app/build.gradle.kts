@@ -80,6 +80,7 @@ dependencies {
 //    room
     implementation(libs.room.ktx)
     implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.auth)
     ksp(libs.room.compiler)
 
 //    coroutine
