@@ -2,23 +2,32 @@ package com.fromryan.projectfoodapp.presentation.profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.fromryan.projectfoodapp.data.model.Profile
+import com.fromryan.projectfoodapp.data.repository.UserRepository
+import kotlinx.coroutines.Dispatchers
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(private val repo: UserRepository) : ViewModel() {
 
-    val profileData = MutableLiveData(
-        Profile(
-            name = "Muhammad Febriansyah",
-            email = "work.rsyah1641@gmail.com",
-            profileImg = "https://i.pinimg.com/564x/19/99/e0/1999e052d1f7263e4674294285f7c576.jpg",
-            nohp = "082144445148",
-        )
-    )
 
     val isEditMode = MutableLiveData(false)
 
     fun changeEditMode() {
         val currentValue = isEditMode.value ?: false
         isEditMode.postValue(!currentValue)
+    }
+
+    fun changeProfile(fullName: String) = repo.updateProfile(fullName).asLiveData(Dispatchers.IO)
+
+    fun changePassword() {
+        repo.requestChangePasswordByEmail()
+    }
+    fun getCurrentUser() = repo.getCurrentUser()
+
+
+    fun isUserLoggedIn() = repo.isLoggedIn()
+
+    fun doLogout() {
+        repo.doLogout()
     }
 }

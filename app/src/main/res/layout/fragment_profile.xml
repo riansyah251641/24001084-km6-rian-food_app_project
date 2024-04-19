@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:overScrollMode="never"
     android:layout_height="match_parent"
     tools:context=".presentation.profile.ProfileFragment">
 
@@ -38,6 +39,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
@@ -57,10 +59,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/switchMode"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center"
-                    android:src="@drawable/iv_logo_app"
+                    android:src="@drawable/iv_user_profile"
                     />
 
             <TextView
@@ -130,7 +132,7 @@
                 android:layout_height="45dp"
                 android:enabled="false"
                 android:background="@drawable/bg_rectangle_white_12"
-                android:text="082144445148"
+                android:text="@string/text_phone_profile"
                 android:textColor="@color/text_semibold"
                 android:layout_marginBottom="32dp"
                 android:layout_marginHorizontal="8dp"
@@ -139,21 +141,20 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_nomor_tabel_profile"/>
 
-            <Button
-                android:id="@+id/switchMode"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_change_pw"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:thumb="@drawable/bg_switch_mode_thumb"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:track="@drawable/bg_switch_mode_track"
-                android:text="@string/textto_dark_mode"/>
-
-
+                android:text="@string/text_link_change_password"
+                app:layout_constraintTop_toBottomOf="@+id/et_nomor_text_profile"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:textColor="?attr/colorPrimary"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+
 
 <Button
     android:id="@+id/btn_edit_profile"
@@ -163,10 +164,32 @@
     android:textColor="@color/bg_light"
     android:textSize="14sp"
     android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_marginVertical="24dp"
+    app:layout_constraintBottom_toTopOf="@+id/switchMode"
+    android:layout_marginVertical="8dp"
     android:layout_marginHorizontal="48dp"
     />
+
+    <Button
+        android:id="@+id/switchMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginVertical="8dp"
+        android:text="@string/textto_dark_mode"
+      app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/logout_profile"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/logout_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginVertical="24dp"
+        android:text="@string/text_button_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

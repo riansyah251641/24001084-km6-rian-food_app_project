@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -37,6 +39,25 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
+    }
+
+    flavorDimensions += "env"
+    productFlavors {
+        create("production") {
+            buildConfigField(
+                type = "String",
+                name = "BASE_URL",
+                value = "\"https://api-restaurant.binaracademy.org/\""
+            )
+        }
+        create("integration") {
+            buildConfigField(
+                type = "String",
+                name = "BASE_URL",
+                value = "\"https://api-restaurant.binaracademy.org/\""
+            )
+        }
     }
 }
 
@@ -58,6 +79,8 @@ dependencies {
 
 //    room
     implementation(libs.room.ktx)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.auth)
     ksp(libs.room.compiler)
 
 //    coroutine
@@ -69,4 +92,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+//    retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
 }

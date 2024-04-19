@@ -103,15 +103,15 @@ class CheckoutActivity : AppCompatActivity() {
 
     private fun setClickListeners() {
         binding.ivBack.setOnClickListener {
-            onBackPressed()
+            finish()
         }
         binding.btnCheckout.setOnClickListener{
             viewModel.deleteAllCarts()
-            customDialog()
+            checkoutDialog()
         }
     }
 
-    private fun customDialog(){
+    private fun checkoutDialog(){
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -121,7 +121,6 @@ class CheckoutActivity : AppCompatActivity() {
         btnClose.setOnClickListener{
             dialog.dismiss()
             finish()
-            
         }
         dialog.show()
     }

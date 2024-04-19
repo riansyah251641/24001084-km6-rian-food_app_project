@@ -1,8 +1,8 @@
 package com.fromryan.projectfoodapp.data.repository
 
 import com.fromryan.projectfoodapp.data.datasource.cart.CartDataSource
-import com.fromryan.projectfoodapp.data.datasource.mapper.toCartEntity
-import com.fromryan.projectfoodapp.data.datasource.mapper.toCartList
+import com.fromryan.projectfoodapp.data.mapper.toCartEntity
+import com.fromryan.projectfoodapp.data.mapper.toCartList
 import com.fromryan.projectfoodapp.data.model.Cart
 import com.fromryan.projectfoodapp.data.model.Catalog
 import com.fromryan.projectfoodapp.data.model.PriceItem
