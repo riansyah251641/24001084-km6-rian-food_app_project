@@ -15,9 +15,6 @@
         android:name="com.fromryan.projectfoodapp.presentation.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"

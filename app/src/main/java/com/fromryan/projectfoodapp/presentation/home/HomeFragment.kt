@@ -31,6 +31,7 @@ import com.fromryan.projectfoodapp.presentation.detailfood.DetailFoodActivity
 import com.fromryan.projectfoodapp.presentation.home.adapter.CatalogAdapter
 import com.fromryan.projectfoodapp.presentation.home.adapter.CategoryAdapter
 import com.fromryan.projectfoodapp.presentation.home.adapter.OnItemClickedListener
+import com.fromryan.projectfoodapp.presentation.main.MainActivity
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.proceedWhen
 
@@ -85,6 +86,15 @@ class HomeFragment : Fragment() {
             bindFoodList(isUsingGridMode)
         }
 
+        binding.ivSearchIcon.setOnClickListener{
+            navigationToProfile()
+        }
+
+    }
+
+    private fun navigationToProfile(){
+        if(requireActivity() !is MainActivity) return
+        (requireActivity() as MainActivity).navigateToProfile()
     }
 
     private fun setIconMode(typeMode: Boolean) {

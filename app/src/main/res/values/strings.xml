@@ -39,8 +39,8 @@
     <string name="text_e_wallet">Dompet Digital</string>
     <string name="text_title_shopping_sumary">Ringkasan Pembayaran</string>
     <string name="text_checkout_button">Pesan Sekarang</string>
-    <string name="tf_name">Pacar Virtual, blm perna ketemu</string>
-    <string name="tf_email">MantuIdaman@gmail.com</string>
+    <string name="tf_name">Username tidak terdeteksi</string>
+    <string name="tf_email">Email tidak terdeteksi</string>
     <string name="btn_add_to_cart">add to cart</string>
     <string name="text_edit_profile">Edit Profile</string>
     <string name="text_save">SAVE</string>
@@ -59,4 +59,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec li
     <string name="text_titile_lokasi_detail">Lokasi</string>
     <string name="textto_dark_mode">Change Theme</string>
     <string name="text_change_to_light_mode">Change Theme</string>
+    <string name="text_hint_email">email</string>
+    <string name="title_login">Welcome To Food App</string>
+    <string name="text_login_detail_title">Harap Login Agar Semakin Berkah Dunia Akhirat</string>
+    <string name="text_hint_password">Password</string>
+    <string name="text_button_login">Login</string>
+    <string name="text_nav_to_register">Belum Punya Akun? <b>klik disini</b></string>
+    <string name="text_error_email_empty">Email masih kosong</string>
+    <string name="text_error_email_invalid">Email tidak valid</string>
+    <string name="text_error_pw_empty">Password tidak boleh kosong</string>
+    <string name="text_error_name_empty">Nama tidak boleh kosong</string>
+    <string name="text_error_pw_lower">Password harus lebih dari 8 charakter</string>
+    <string name="text_pw_nomatch">Password tidak sesuai</string>
+    <string name="text_hint_name">nama</string>
+    <string name="text_detail_register">Daftar dan Temukan Makanan Faforit Kamu !</string>
+    <string name="text_password_confirm">Konfirmasi Password</string>
+    <string name="text_button_register">Daftar</string>
+    <string name="text_nav_to_login">Sudah Punya Akun? <b>Login</b></string>
+    <string name="text_button_logout">Logout</string>
+    <string name="text_dialog_logout">Hanya memastikan, Apakah Anda ingin Logout?</string>
+    <string name="text_doalog_logout_back">kembali</string>
+    <string name="text_phone_profile">082156450989</string>
 </resources>

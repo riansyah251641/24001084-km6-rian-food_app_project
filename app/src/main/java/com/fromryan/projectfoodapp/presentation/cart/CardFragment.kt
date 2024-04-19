@@ -10,16 +10,23 @@ import androidx.fragment.app.viewModels
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.fromryan.projectfoodapp.R
+import com.fromryan.projectfoodapp.data.datasource.auth.AuthDataSource
+import com.fromryan.projectfoodapp.data.datasource.auth.FirebaseAuthDataSource
 import com.fromryan.projectfoodapp.data.datasource.cart.CartDataSource
 import com.fromryan.projectfoodapp.data.datasource.cart.CartDatabaseDataSource
 import com.fromryan.projectfoodapp.data.model.Cart
 import com.fromryan.projectfoodapp.data.repository.CartRepository
 import com.fromryan.projectfoodapp.data.repository.CartRepositoryImpl
+import com.fromryan.projectfoodapp.data.repository.UserRepository
+import com.fromryan.projectfoodapp.data.repository.UserRepositoryImpl
+import com.fromryan.projectfoodapp.data.source.firebase.FirebaseService
+import com.fromryan.projectfoodapp.data.source.firebase.FirebaseServiceImpl
 import com.fromryan.projectfoodapp.data.source.lokal.database.AppDatabase
 import com.fromryan.projectfoodapp.databinding.FragmentCardBinding
 import com.fromryan.projectfoodapp.presentation.checkout.CheckoutActivity
 import com.fromryan.projectfoodapp.presentation.common.adapter.CartListAdapter
 import com.fromryan.projectfoodapp.presentation.common.adapter.CartListener
+import com.fromryan.projectfoodapp.presentation.login.LoginActivity
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
 import com.fromryan.projectfoodapp.utils.hideKeyboard
@@ -34,8 +41,11 @@ class CardFragment : Fragment() {
         val database = AppDatabase.getInstance(requireContext())
         val cartDao = database.cartDao()
         val cartDataSource: CartDataSource = CartDatabaseDataSource(cartDao)
-        val repo: CartRepository = CartRepositoryImpl(cartDataSource)
-        GenericViewModelFactory.create(CardViewModel(repo))
+        val cartRepo: CartRepository = CartRepositoryImpl(cartDataSource)
+        val user: FirebaseService = FirebaseServiceImpl()
+        val userDataSource: AuthDataSource = FirebaseAuthDataSource(user)
+        val userRepo: UserRepository = UserRepositoryImpl(userDataSource)
+        GenericViewModelFactory.create(CardViewModel(cartRepo,userRepo))
     }
 
     private val adapter: CartListAdapter by lazy {
@@ -76,7 +86,7 @@ class CardFragment : Fragment() {
 
     private fun setClickListener() {
         binding.btnCheckout.setOnClickListener {
-            context?.startActivity(Intent(requireContext(), CheckoutActivity::class.java))
+            checkIfUserLogin()
         }
 
     }
@@ -123,6 +133,18 @@ class CardFragment : Fragment() {
                 binding.rvCart.isVisible = false
             })
         }
+    }
+
+    private fun checkIfUserLogin() {
+        if (viewModel.isUserLoggedIn()) {
+            context?.startActivity(Intent(requireContext(), CheckoutActivity::class.java))
+        } else {
+            navigateToLogin()
+        }
+    }
+
+    private fun navigateToLogin() {
+        startActivity(Intent(requireContext(), LoginActivity::class.java))
     }
 
 }

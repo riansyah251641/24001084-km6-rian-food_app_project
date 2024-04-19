@@ -30,7 +30,7 @@
     <LinearLayout
         android:id="@+id/ll_search"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@drawable/bg_rectangle_white_12"
         android:gravity="start|center"
         android:paddingVertical="4dp"
@@ -48,12 +48,13 @@
             android:layout_height="35dp"
             android:src="@drawable/ic_search"/>
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:textStyle="normal"
+            android:background="@null"
             android:textColor="@color/text_desk"
-            android:text="@string/text_header_user"
+            android:hint="@string/text_header_user"
             android:textSize="12sp"
             android:gravity="center|start"/>
     </LinearLayout>
@@ -91,7 +92,7 @@
             android:id="@+id/iv_banner_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/iv_banner_main_activity"
+            android:src="@drawable/iv_banner_home"
             android:scaleType="centerCrop"
             />
 

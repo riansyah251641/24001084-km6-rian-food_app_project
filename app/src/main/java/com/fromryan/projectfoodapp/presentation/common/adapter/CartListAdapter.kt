@@ -12,6 +12,7 @@ import com.fromryan.projectfoodapp.data.model.Cart
 import com.fromryan.projectfoodapp.databinding.ItemCartCatalogBinding
 import com.fromryan.projectfoodapp.databinding.ItemCartCatalogOrderBinding
 import com.fromryan.projectfoodapp.utils.doneEditing
+import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
 
 class CartListAdapter(private val cartListener: CartListener? = null) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -74,7 +75,7 @@ class CartListAdapter(private val cartListener: CartListener? = null) :
                 }
                 tvCatalogCount.text = item.itemQuantity.toString()
                 tvCatalogName.text = item.catalogName
-                tvCatalogPrice.text = (item.itemQuantity * item.catalogPrice).toString()
+                tvCatalogPrice.text = (item.itemQuantity * item.catalogPrice).formatToIDRCurrency()
             }
         }
 
