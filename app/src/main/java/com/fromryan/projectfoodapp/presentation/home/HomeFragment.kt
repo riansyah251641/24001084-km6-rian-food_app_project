@@ -109,8 +109,8 @@ class HomeFragment : Fragment() {
                 override fun onItemClicked(item: Catalog) {
                     navigateToDetail(item)
                 }
-                override fun onItemAddToCart(item: Catalog) {
-
+                override fun onItemAddedToCart(item: Catalog) {
+                    viewModel.addItemToCart(item)
                 }
             }
         )
@@ -154,7 +154,7 @@ class HomeFragment : Fragment() {
                 },
                 doOnEmpty = {
                     binding.layoutState.root.isVisible = true
-                    binding.layoutState.pbLoading.isVisible = true
+                    binding.layoutState.pbLoading.isVisible = false
                     binding.rvListFood.isVisible = false
                 },
                 doOnLoading = {
@@ -174,43 +174,34 @@ class HomeFragment : Fragment() {
                 doOnSuccess = {
                     binding.layoutStateCategory.root.isVisible = false
                     binding.layoutStateCategory.pbLoading.isVisible = false
-                    binding.layoutStateCategory.textError.isVisible = false
                     binding.rvListOfCategory.isVisible = true
-                    binding.layoutState.textError.isVisible = false
                     it.payload?.let { data -> bindCategory(data) }
                 },
                 doOnError = {
-                    binding.layoutState.root.isVisible = true
-                    binding.layoutState.pbLoading.isVisible = true
-                    binding.layoutState.textError.isVisible = true
-                    binding.rvListFood.isVisible = false
+                    binding.rvListOfCategory.isVisible = false
                 },
                 doOnEmpty = {
-                    binding.layoutState.root.isVisible = true
-                    binding.layoutState.pbLoading.isVisible = false
-                    binding.layoutState.textError.isVisible = true
-                    binding.rvListFood.isVisible = false
+                    binding.rvListOfCategory.isVisible = false
                 },
                 doOnLoading = {
-                    binding.layoutState.root.isVisible = true
-                    binding.layoutState.pbLoading.isVisible = true
-                    binding.rvListFood.isVisible = false
-                    binding.layoutState.textError.isVisible = false
+                    binding.layoutStateCategory.root.isVisible = true
+                    binding.layoutStateCategory.pbLoading.isVisible = true
+                    binding.rvListOfCategory.isVisible = false
                 }
             )
         }
     }
 
 
-//bind catalog
-private fun bindCatalog(catalog: List<Catalog>) {
-    catalogAdapter?.submitData(catalog)
-}
+    //bind catalog
+    private fun bindCatalog(catalog: List<Catalog>) {
+        catalogAdapter?.submitData(catalog)
+    }
 
-//    bind category
-private fun bindCategory(categories: List<Category>) {
-    categoryAdapter.submitData(categories)
-}
+    //    bind category
+    private fun bindCategory(categories: List<Category>) {
+        categoryAdapter.submitData(categories)
+    }
     //    using intents for activity
     private fun navigateToDetail(item: Catalog) {
         DetailFoodActivity.startActivity(
