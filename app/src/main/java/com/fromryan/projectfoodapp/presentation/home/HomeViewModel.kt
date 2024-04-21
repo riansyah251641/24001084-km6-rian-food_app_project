@@ -28,12 +28,12 @@ class HomeViewModel (
     fun addItemToCart(menu: Catalog) {
         addCatalog.value = 1
 
-        cartRepository.createCart(menu, 1)
+        cartRepository.createCart(menu, 0)
             .asLiveData(Dispatchers.IO)
             .observeForever { result ->
                 when (result) {
                     is ResultWrapper.Success -> {
-                        println("Produk berhasil ditambahkan")
+                        println("Berhasil Di tambahkan ke Cart")
                     }
 
                     is ResultWrapper.Error -> {

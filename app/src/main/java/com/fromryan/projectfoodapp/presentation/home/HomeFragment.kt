@@ -109,8 +109,8 @@ class HomeFragment : Fragment() {
                 override fun onItemClicked(item: Catalog) {
                     navigateToDetail(item)
                 }
-                override fun onItemAddToCart(item: Catalog) {
-
+                override fun onItemAddedToCart(item: Catalog) {
+                    viewModel.addItemToCart(item)
                 }
             }
         )
@@ -193,15 +193,15 @@ class HomeFragment : Fragment() {
     }
 
 
-//bind catalog
-private fun bindCatalog(catalog: List<Catalog>) {
-    catalogAdapter?.submitData(catalog)
-}
+    //bind catalog
+    private fun bindCatalog(catalog: List<Catalog>) {
+        catalogAdapter?.submitData(catalog)
+    }
 
-//    bind category
-private fun bindCategory(categories: List<Category>) {
-    categoryAdapter.submitData(categories)
-}
+    //    bind category
+    private fun bindCategory(categories: List<Category>) {
+        categoryAdapter.submitData(categories)
+    }
     //    using intents for activity
     private fun navigateToDetail(item: Catalog) {
         DetailFoodActivity.startActivity(

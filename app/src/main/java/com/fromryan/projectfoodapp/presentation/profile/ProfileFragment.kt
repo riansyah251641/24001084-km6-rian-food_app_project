@@ -107,10 +107,10 @@ class ProfileFragment : Fragment() {
                 if (count % 2 == 0) {
                     val name = binding.etNameTextProfile.text.toString().trim()
                     binding.btnEditProfile.setText(getString(R.string.text_edit_profile))
+                    changeProfileName(name)
                 } else {
                     binding.btnEditProfile.setText(getString(R.string.text_save))
                 }
-
 
                 } else {
                     navigateToLogin()
@@ -125,19 +125,20 @@ class ProfileFragment : Fragment() {
                 }
             }
 
-        binding.tvChangePw.setOnClickListener{
-            changePasswordUser()
+        binding.btnChangePw.setOnClickListener{
+            if (viewModel.isUserLoggedIn()) {
+                changePasswordUser()
+            }  else {
+            navigateToLogin()
         }
-        binding.btnEditProfile
 
-
+        }
 
     }
 
     private fun changeEditMode() {
         viewModel.isEditMode.observe(viewLifecycleOwner) {
             binding.etNameTextProfile.isEnabled = it
-            binding.etEmailTextProfile.isEnabled = it
             binding.etNomorTextProfile.isEnabled = it
         }
     }
