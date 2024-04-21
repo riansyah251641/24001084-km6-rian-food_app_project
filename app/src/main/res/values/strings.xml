@@ -85,5 +85,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec li
     <string name="text_link_edit_profile_failed">data profile gagal diedit</string>
     <string name="text_dialog_change_pw">Link untuk mengubah password telah dikirim di email yang terdaftar</string>
     <string name="text_back">Kembali</string>
+    <string name="text_error_state">Gagal Memuat Data, Pastikan Terkonesi Dengan Internet dan Buka Aplikasi Kembali</string>
 
 </resources>

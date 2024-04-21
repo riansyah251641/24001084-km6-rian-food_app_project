@@ -154,7 +154,7 @@ class HomeFragment : Fragment() {
                 },
                 doOnEmpty = {
                     binding.layoutState.root.isVisible = true
-                    binding.layoutState.pbLoading.isVisible = false
+                    binding.layoutState.pbLoading.isVisible = true
                     binding.rvListFood.isVisible = false
                 },
                 doOnLoading = {
@@ -174,19 +174,28 @@ class HomeFragment : Fragment() {
                 doOnSuccess = {
                     binding.layoutStateCategory.root.isVisible = false
                     binding.layoutStateCategory.pbLoading.isVisible = false
+                    binding.layoutStateCategory.textError.isVisible = false
                     binding.rvListOfCategory.isVisible = true
+                    binding.layoutState.textError.isVisible = false
                     it.payload?.let { data -> bindCategory(data) }
                 },
                 doOnError = {
-                    binding.rvListOfCategory.isVisible = false
+                    binding.layoutState.root.isVisible = true
+                    binding.layoutState.pbLoading.isVisible = true
+                    binding.layoutState.textError.isVisible = true
+                    binding.rvListFood.isVisible = false
                 },
                 doOnEmpty = {
-                    binding.rvListOfCategory.isVisible = false
+                    binding.layoutState.root.isVisible = true
+                    binding.layoutState.pbLoading.isVisible = false
+                    binding.layoutState.textError.isVisible = true
+                    binding.rvListFood.isVisible = false
                 },
                 doOnLoading = {
-                    binding.layoutStateCategory.root.isVisible = true
-                    binding.layoutStateCategory.pbLoading.isVisible = true
-                    binding.rvListOfCategory.isVisible = false
+                    binding.layoutState.root.isVisible = true
+                    binding.layoutState.pbLoading.isVisible = true
+                    binding.rvListFood.isVisible = false
+                    binding.layoutState.textError.isVisible = false
                 }
             )
         }
