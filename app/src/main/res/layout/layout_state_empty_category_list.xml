@@ -10,11 +10,10 @@
         android:id="@+id/pb_loading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="800dp"
         app:lottie_autoPlay="true"
         app:lottie_speed="1"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/loading_state_cart"
+        app:lottie_rawRes="@raw/loading_state_category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,17 +21,6 @@
         android:saveEnabled="false"
         />
 
-    <ImageView
-        android:id="@+id/iv_error"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/iv_empty_display"
-        tools:visibility="visible" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
