@@ -23,17 +23,13 @@ import com.fromryan.projectfoodapp.presentation.register.RegisterActivity
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.proceedWhen
 import com.google.android.material.textfield.TextInputLayout
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-    class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
         private val binding: ActivityLoginBinding by lazy {
             ActivityLoginBinding.inflate(layoutInflater)
         }
-        private val viewModel: LoginViewModel by viewModels {
-            val s: FirebaseService = FirebaseServiceImpl()
-            val ds: AuthDataSource = FirebaseAuthDataSource(s)
-            val r: UserRepository = UserRepositoryImpl(ds)
-            GenericViewModelFactory.create(LoginViewModel(r))
-        }
+        private val loginViewModel: LoginViewModel by viewModel()
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -67,7 +63,7 @@ import com.google.android.material.textfield.TextInputLayout
         }
 
         private fun observeResult() {
-            viewModel.loginResult.observe(this) {
+            loginViewModel.loginResult.observe(this) {
                 it.proceedWhen(
                     doOnSuccess = {
                         binding.pbLoadingLogin.isVisible = false
@@ -95,7 +91,7 @@ import com.google.android.material.textfield.TextInputLayout
             if (isFormValid()) {
                 val email = binding.editTeksLoginEmail.text.toString().trim()
                 val password = binding.editTextLoginPassword.text.toString().trim()
-                viewModel.doLogin(email, password)
+                loginViewModel.doLogin(email, password)
             }
         }
 

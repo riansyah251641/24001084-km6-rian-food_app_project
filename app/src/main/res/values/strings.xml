@@ -86,5 +86,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor justo nec li
     <string name="text_dialog_change_pw">Link untuk mengubah password telah dikirim di email yang terdaftar</string>
     <string name="text_back">Kembali</string>
     <string name="text_error_state">Gagal Memuat Data, Pastikan Terkonesi Dengan Internet dan Buka Aplikasi Kembali</string>
+    <string name="text_profile_fragment_profile">Profile</string>
+    <string name="text_menu_home">Home</string>
+    <string name="text_menu_cart">Your Cart</string>
+    <string name="text_menu_profile">Profile</string>
+    <string name="text_0_price">Rp 0</string>
 
 </resources>

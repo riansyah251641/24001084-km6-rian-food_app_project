@@ -75,7 +75,7 @@ dependencies {
     implementation(libs.fragment.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation ("androidx.core:core-splashscreen:1.0.1")
+    implementation (libs.splashscreen)
 
 //    room
     implementation(libs.room.ktx)
@@ -88,7 +88,7 @@ dependencies {
     implementation(libs.coroutine.android)
 
 //    lottie
-    implementation("com.airbnb.android:lottie:3.4.0")
+    implementation(libs.lottie)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -97,4 +97,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp)
+
+//    koin
+    implementation(libs.koin.android)
 }

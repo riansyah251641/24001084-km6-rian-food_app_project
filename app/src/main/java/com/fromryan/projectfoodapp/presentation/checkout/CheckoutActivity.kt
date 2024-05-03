@@ -21,17 +21,12 @@ import com.fromryan.projectfoodapp.presentation.common.adapter.CartListAdapter
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
 import com.fromryan.projectfoodapp.utils.proceedWhen
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CheckoutActivity : AppCompatActivity() {
 
-    private val viewModel: CheckoutViewModel by viewModels {
-        val database = AppDatabase.getInstance(this)
-        val cartDao = database.cartDao()
-        val cartDataSource: CartDataSource = CartDatabaseDataSource(cartDao)
-        val repo: CartRepository = CartRepositoryImpl(cartDataSource)
-        GenericViewModelFactory.create(CheckoutViewModel(repo))
-    }
+    private val checkoutViewModel: CheckoutViewModel by viewModel()
 
     private val binding : ActivityCheckoutBinding by lazy {
         ActivityCheckoutBinding.inflate(layoutInflater)
@@ -59,7 +54,7 @@ class CheckoutActivity : AppCompatActivity() {
         binding.layoutContent.rvShoppingSummary.adapter = priceItemAdapter
     }
     private fun observeData() {
-        viewModel.checkoutData.observe(this) {result ->
+        checkoutViewModel.checkoutData.observe(this) {result ->
             result.proceedWhen(doOnSuccess = { result ->
                 binding.layoutState.root.isVisible = false
                 binding.layoutState.pbLoading.isVisible = false
@@ -92,7 +87,7 @@ class CheckoutActivity : AppCompatActivity() {
                 binding.layoutState.ivError.isVisible = true
                 binding.layoutState.ivError.setImageResource(R.drawable.iv_empty_display)
                 data.payload?.let { (_, totalPrice) ->
-                    binding.tvTotalPrice.text = "Rp 0"
+                    binding.tvTotalPrice.text = getString(R.string.text_0_price)
                 }
                 binding.layoutContent.root.isVisible = false
                 binding.layoutContent.rvCart.isVisible = false
@@ -106,7 +101,7 @@ class CheckoutActivity : AppCompatActivity() {
             finish()
         }
         binding.btnCheckout.setOnClickListener{
-            viewModel.deleteAllCarts()
+            checkoutViewModel.deleteAllCarts()
             checkoutDialog()
         }
     }

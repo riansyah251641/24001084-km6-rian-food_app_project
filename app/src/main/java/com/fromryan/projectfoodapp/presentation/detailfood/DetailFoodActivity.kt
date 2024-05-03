@@ -19,6 +19,8 @@ import com.fromryan.projectfoodapp.databinding.ActivityDetailFoodBinding
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
 import com.fromryan.projectfoodapp.utils.proceedWhen
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class DetailFoodActivity : AppCompatActivity() {
 
@@ -41,13 +43,8 @@ private val binding: ActivityDetailFoodBinding by lazy {
     ActivityDetailFoodBinding.inflate(layoutInflater)
 }
 
-    private val viewModel: DetailFoodViewModel by viewModels {
-        val db = AppDatabase.getInstance(this)
-        val ds: CartDataSource = CartDatabaseDataSource(db.cartDao())
-        val rp: CartRepository = CartRepositoryImpl(ds)
-        GenericViewModelFactory.create(
-            DetailFoodViewModel(intent?.extras, rp)
-        )
+    private val detailViewModel: DetailFoodViewModel by viewModel {
+        parametersOf(intent.extras)
     }
 
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +76,7 @@ private fun setProfileData(item: Catalog) {
 }
 
     private fun addProductToCart() {
-        viewModel.addToCart().observe(this) {
+        detailViewModel.addToCart().observe(this) {
             it.proceedWhen(
                 doOnSuccess = {
                     Toast.makeText(
@@ -123,11 +120,11 @@ private fun clickAction(){
         count += 1
         binding.tvCountOrder.text = count.toString()
         updateBtnDetailOrderText(priceItem)
-        viewModel.add()
+        detailViewModel.add()
     }
     binding.ivOrderDown.setOnClickListener {
         if (count > 0){
-            viewModel.minus()
+            detailViewModel.minus()
             binding.tvCountOrder.text = count.toString()
             updateBtnDetailOrderText(priceItem)
             count -= 1

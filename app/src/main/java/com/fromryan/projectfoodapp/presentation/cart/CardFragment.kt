@@ -31,39 +31,31 @@ import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
 import com.fromryan.projectfoodapp.utils.hideKeyboard
 import com.fromryan.projectfoodapp.utils.proceedWhen
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CardFragment : Fragment() {
 
     private lateinit var binding: FragmentCardBinding
 
-    private val viewModel: CardViewModel by viewModels {
-        val database = AppDatabase.getInstance(requireContext())
-        val cartDao = database.cartDao()
-        val cartDataSource: CartDataSource = CartDatabaseDataSource(cartDao)
-        val cartRepo: CartRepository = CartRepositoryImpl(cartDataSource)
-        val user: FirebaseService = FirebaseServiceImpl()
-        val userDataSource: AuthDataSource = FirebaseAuthDataSource(user)
-        val userRepo: UserRepository = UserRepositoryImpl(userDataSource)
-        GenericViewModelFactory.create(CardViewModel(cartRepo,userRepo))
-    }
+    private val cartViewModel: CardViewModel by viewModel()
 
     private val adapter: CartListAdapter by lazy {
         CartListAdapter(object : CartListener {
             override fun onPlusTotalItemCartClicked(cart: Cart) {
-                viewModel.increaseCart(cart)
+                cartViewModel.increaseCart(cart)
             }
 
             override fun onMinusTotalItemCartClicked(cart: Cart) {
-                viewModel.decreaseCart(cart)
+                cartViewModel.decreaseCart(cart)
             }
 
             override fun onRemoveCartClicked(cart: Cart) {
-                viewModel.removeCart(cart)
+                cartViewModel.removeCart(cart)
             }
 
             override fun onUserDoneEditingNotes(cart: Cart) {
-                viewModel.setCartNotes(cart)
+                cartViewModel.setCartNotes(cart)
                 hideKeyboard()
             }
         })
@@ -97,7 +89,7 @@ class CardFragment : Fragment() {
     }
 
     private fun observeData() {
-        viewModel.getAllCarts().observe(viewLifecycleOwner) {
+        cartViewModel.getAllCarts().observe(viewLifecycleOwner) {
             it.proceedWhen(doOnSuccess = { result ->
                 binding.layoutState.root.isVisible = false
                 binding.layoutState.pbLoading.isVisible = false
@@ -136,7 +128,7 @@ class CardFragment : Fragment() {
     }
 
     private fun checkIfUserLogin() {
-        if (viewModel.isUserLoggedIn()) {
+        if (cartViewModel.isUserLoggedIn()) {
             context?.startActivity(Intent(requireContext(), CheckoutActivity::class.java))
         } else {
             navigateToLogin()
