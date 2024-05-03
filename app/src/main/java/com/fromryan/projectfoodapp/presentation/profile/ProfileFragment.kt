@@ -31,16 +31,12 @@ import com.fromryan.projectfoodapp.presentation.main.SharedPreferenceMainManager
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.proceedWhen
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
 
-    private val viewModel: ProfileViewModel by viewModels {
-        val user: FirebaseService = FirebaseServiceImpl()
-        val userDataSource: AuthDataSource = FirebaseAuthDataSource(user)
-        val userRepo: UserRepository = UserRepositoryImpl(userDataSource)
-        GenericViewModelFactory.create(ProfileViewModel(userRepo))
-    }
+    private val profileViewModel: ProfileViewModel by viewModel()
 
     var count = 0
 
@@ -65,14 +61,14 @@ class ProfileFragment : Fragment() {
 
 
     private fun getProfileData() {
-        viewModel.getCurrentUser()?.let {
+        profileViewModel.getCurrentUser()?.let {
             binding.etNameTextProfile.setText(it.fullName)
             binding.etEmailTextProfile.setText(it.email)
         }
     }
 
     private fun checkIfUserLogin() {
-        if (viewModel.isUserLoggedIn()) {
+        if (profileViewModel.isUserLoggedIn()) {
 
         } else {
             navigateToLogin()
@@ -101,9 +97,9 @@ class ProfileFragment : Fragment() {
 
     private fun setClickListener() {
             binding.btnEditProfile.setOnClickListener {
-                if (viewModel.isUserLoggedIn()) {
-                count += 1
-                viewModel.changeEditMode()
+                if (profileViewModel.isUserLoggedIn()) {
+                    count += 1 ;
+                    profileViewModel.changeEditMode()
                 if (count % 2 == 0) {
                     val name = binding.etNameTextProfile.text.toString().trim()
                     binding.btnEditProfile.setText(getString(R.string.text_edit_profile))
@@ -118,7 +114,7 @@ class ProfileFragment : Fragment() {
             }
 
             binding.logoutProfile.setOnClickListener {
-                if (viewModel.isUserLoggedIn()) {
+                if (profileViewModel.isUserLoggedIn()) {
                 logoutUser()
                 } else {
                     navigateToLogin()
@@ -126,7 +122,7 @@ class ProfileFragment : Fragment() {
             }
 
         binding.btnChangePw.setOnClickListener{
-            if (viewModel.isUserLoggedIn()) {
+            if (profileViewModel.isUserLoggedIn()) {
                 changePasswordUser()
             }  else {
             navigateToLogin()
@@ -137,7 +133,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun changeEditMode() {
-        viewModel.isEditMode.observe(viewLifecycleOwner) {
+        profileViewModel.isEditMode.observe(viewLifecycleOwner) {
             binding.etNameTextProfile.isEnabled = it
             binding.etNomorTextProfile.isEnabled = it
         }
@@ -149,7 +145,7 @@ class ProfileFragment : Fragment() {
         dialog.setCancelable(true)
         dialog.setContentView(R.layout.layout_dialog_change_password)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        viewModel.changePassword()
+        profileViewModel.changePassword()
         val backBtn: Button = dialog.findViewById(R.id.btn_back)
         backBtn.setOnClickListener {
             dialog.dismiss()
@@ -158,11 +154,11 @@ class ProfileFragment : Fragment() {
     }
 
     private fun changeProfileName(fullName: String) {
-        viewModel.changeProfile(fullName).observe(viewLifecycleOwner) {
+        profileViewModel.changeProfile(fullName).observe(viewLifecycleOwner) {
             it.proceedWhen(
                 doOnSuccess = {
                     Toast.makeText(requireContext(), getString(R.string.text_link_edit_profile_success), Toast.LENGTH_SHORT).show()
-                    viewModel.changeEditMode()
+                    profileViewModel.changeEditMode()
                 },
                 doOnError = {
                     Toast.makeText(requireContext(), getString(R.string.text_link_edit_profile_failed), Toast.LENGTH_SHORT).show()
@@ -185,7 +181,7 @@ class ProfileFragment : Fragment() {
         }
         btnLogout.setOnClickListener {
             dialog.dismiss()
-            viewModel.doLogout()
+            profileViewModel.doLogout()
             navigateToHome()
         }
         dialog.show()

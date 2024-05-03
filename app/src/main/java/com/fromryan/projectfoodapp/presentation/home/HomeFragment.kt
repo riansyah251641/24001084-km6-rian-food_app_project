@@ -34,6 +34,7 @@ import com.fromryan.projectfoodapp.presentation.home.adapter.OnItemClickedListen
 import com.fromryan.projectfoodapp.presentation.main.MainActivity
 import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.proceedWhen
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -45,22 +46,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private val viewModel: HomeViewModel by viewModels {
-        var ApiDataServices= ApiDataServices.invoke()
-        val database = AppDatabase.getInstance(requireContext())
-        val cartDataSource: CartDataSource = CartDatabaseDataSource(database.cartDao())
-        val cartRepository = CartRepositoryImpl(cartDataSource)
-
-        val catalogDataSource : CatalogDataSource = CatalogApiDataSource(ApiDataServices)
-        val catalogRepository: CatalogRepository = CatalogRepositoryImpl(catalogDataSource)
-        val categoryDataSource: CategoryDataSource = CategoryApiDataSource(ApiDataServices)
-        val categoryRepository: CategoryRepository = CategoryRepositoryImpl(categoryDataSource)
-        GenericViewModelFactory.create(
-            HomeViewModel(
-                categoryRepository,
-                catalogRepository,
-                cartRepository))
-    }
+    private val homeViewModel: HomeViewModel by viewModel()
     private var isUsingGridMode: Boolean = false
 
     override fun onCreateView(
@@ -110,7 +96,7 @@ class HomeFragment : Fragment() {
                     navigateToDetail(item)
                 }
                 override fun onItemAddedToCart(item: Catalog) {
-                    viewModel.addItemToCart(item)
+                    homeViewModel.addItemToCart(item)
                 }
             }
         )
@@ -139,7 +125,7 @@ class HomeFragment : Fragment() {
 
     // submit Catalog Data
     private fun getCatalogData(categoryName: String? = null) {
-        viewModel.getCatalogData(categoryName).observe(viewLifecycleOwner) {
+        homeViewModel.getCatalogData(categoryName).observe(viewLifecycleOwner) {
             it.proceedWhen(
                 doOnSuccess = {
                     binding.layoutState.root.isVisible = false
@@ -169,7 +155,7 @@ class HomeFragment : Fragment() {
 //    submit categories data
 
     private fun getCategoryData() {
-        viewModel.getCategoryData().observe(viewLifecycleOwner) {
+        homeViewModel.getCategoryData().observe(viewLifecycleOwner) {
             it.proceedWhen(
                 doOnSuccess = {
                     binding.layoutStateCategory.root.isVisible = false
