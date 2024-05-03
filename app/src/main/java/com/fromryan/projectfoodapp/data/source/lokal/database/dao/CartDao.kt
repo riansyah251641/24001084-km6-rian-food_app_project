@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CartDao {
-
     @Query("SELECT * FROM CARTS")
     fun getAllCarts(): Flow<List<CartEntity>>
 

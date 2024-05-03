@@ -2,74 +2,64 @@ package com.fromryan.projectfoodapp.presentation.cart
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import com.fromryan.projectfoodapp.R
-import com.fromryan.projectfoodapp.data.datasource.auth.AuthDataSource
-import com.fromryan.projectfoodapp.data.datasource.auth.FirebaseAuthDataSource
-import com.fromryan.projectfoodapp.data.datasource.cart.CartDataSource
-import com.fromryan.projectfoodapp.data.datasource.cart.CartDatabaseDataSource
 import com.fromryan.projectfoodapp.data.model.Cart
-import com.fromryan.projectfoodapp.data.repository.CartRepository
-import com.fromryan.projectfoodapp.data.repository.CartRepositoryImpl
-import com.fromryan.projectfoodapp.data.repository.UserRepository
-import com.fromryan.projectfoodapp.data.repository.UserRepositoryImpl
-import com.fromryan.projectfoodapp.data.source.firebase.FirebaseService
-import com.fromryan.projectfoodapp.data.source.firebase.FirebaseServiceImpl
-import com.fromryan.projectfoodapp.data.source.lokal.database.AppDatabase
 import com.fromryan.projectfoodapp.databinding.FragmentCardBinding
 import com.fromryan.projectfoodapp.presentation.checkout.CheckoutActivity
 import com.fromryan.projectfoodapp.presentation.common.adapter.CartListAdapter
 import com.fromryan.projectfoodapp.presentation.common.adapter.CartListener
 import com.fromryan.projectfoodapp.presentation.login.LoginActivity
-import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.formatToIDRCurrency
 import com.fromryan.projectfoodapp.utils.hideKeyboard
 import com.fromryan.projectfoodapp.utils.proceedWhen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class CardFragment : Fragment() {
-
     private lateinit var binding: FragmentCardBinding
 
     private val cartViewModel: CardViewModel by viewModel()
 
     private val adapter: CartListAdapter by lazy {
-        CartListAdapter(object : CartListener {
-            override fun onPlusTotalItemCartClicked(cart: Cart) {
-                cartViewModel.increaseCart(cart)
-            }
+        CartListAdapter(
+            object : CartListener {
+                override fun onPlusTotalItemCartClicked(cart: Cart) {
+                    cartViewModel.increaseCart(cart)
+                }
 
-            override fun onMinusTotalItemCartClicked(cart: Cart) {
-                cartViewModel.decreaseCart(cart)
-            }
+                override fun onMinusTotalItemCartClicked(cart: Cart) {
+                    cartViewModel.decreaseCart(cart)
+                }
 
-            override fun onRemoveCartClicked(cart: Cart) {
-                cartViewModel.removeCart(cart)
-            }
+                override fun onRemoveCartClicked(cart: Cart) {
+                    cartViewModel.removeCart(cart)
+                }
 
-            override fun onUserDoneEditingNotes(cart: Cart) {
-                cartViewModel.setCartNotes(cart)
-                hideKeyboard()
-            }
-        })
+                override fun onUserDoneEditingNotes(cart: Cart) {
+                    cartViewModel.setCartNotes(cart)
+                    hideKeyboard()
+                }
+            },
+        )
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentCardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         setupList()
         observeData()
@@ -80,7 +70,6 @@ class CardFragment : Fragment() {
         binding.btnCheckout.setOnClickListener {
             checkIfUserLogin()
         }
-
     }
 
     private fun setupList() {
@@ -92,7 +81,7 @@ class CardFragment : Fragment() {
         cartViewModel.getAllCarts().observe(viewLifecycleOwner) {
             it.proceedWhen(doOnSuccess = { result ->
                 binding.layoutState.root.isVisible = false
-                binding.layoutState.pbLoading.isVisible = false
+                binding.layoutState.pbLoadingEmptyStateCategoryLottie.isVisible = false
                 binding.layoutState.ivError.isVisible = false
                 binding.clInformationOrder.isVisible = true
                 binding.rvCart.isVisible = true
@@ -102,20 +91,20 @@ class CardFragment : Fragment() {
                 }
             }, doOnLoading = {
                 binding.layoutState.root.isVisible = true
-                binding.layoutState.pbLoading.isVisible = true
+                binding.layoutState.pbLoadingEmptyStateCategoryLottie.isVisible = true
                 binding.layoutState.ivError.isVisible = false
                 binding.clInformationOrder.isVisible = false
                 binding.rvCart.isVisible = false
             }, doOnError = { err ->
                 binding.layoutState.root.isVisible = true
-                binding.layoutState.pbLoading.isVisible = false
+                binding.layoutState.pbLoadingEmptyStateCategoryLottie.isVisible = false
                 binding.layoutState.ivError.isVisible = true
                 binding.layoutState.ivError.setImageResource(R.drawable.iv_empty_display)
                 binding.clInformationOrder.isVisible = false
                 binding.rvCart.isVisible = false
             }, doOnEmpty = { data ->
                 binding.layoutState.root.isVisible = true
-                binding.layoutState.pbLoading.isVisible = false
+                binding.layoutState.pbLoadingEmptyStateCategoryLottie.isVisible = false
                 binding.layoutState.ivError.isVisible = true
                 binding.clInformationOrder.isVisible = false
                 binding.layoutState.ivError.setImageResource(R.drawable.iv_empty_display)
@@ -138,5 +127,4 @@ class CardFragment : Fragment() {
     private fun navigateToLogin() {
         startActivity(Intent(requireContext(), LoginActivity::class.java))
     }
-
 }

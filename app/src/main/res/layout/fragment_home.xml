@@ -54,7 +54,6 @@
             android:layout_height="wrap_content"
             android:textStyle="normal"
             android:background="@null"
-            tools:text="ini adalah pesan"
             android:textColor="@color/text_desk"
             android:hint="@string/text_header_user"
             android:textSize="12sp"

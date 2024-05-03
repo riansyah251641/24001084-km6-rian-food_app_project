@@ -12,5 +12,4 @@ fun CatalogItemResponse?.toCatalog() =
         location = this?.restoAddress.orEmpty(),
     )
 
-fun Collection<CatalogItemResponse>?.toCatalog_collect() =
-    this?.map { it.toCatalog() } ?: listOf()
+fun Collection<CatalogItemResponse>?.toCatalog_collect() = this?.map { it.toCatalog() } ?: listOf()

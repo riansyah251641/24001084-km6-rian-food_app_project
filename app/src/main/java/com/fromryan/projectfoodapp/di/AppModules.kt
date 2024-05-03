@@ -1,6 +1,5 @@
 package com.fromryan.projectfoodapp.di
 
-import android.content.SharedPreferences
 import com.fromryan.projectfoodapp.data.datasource.auth.AuthDataSource
 import com.fromryan.projectfoodapp.data.datasource.auth.FirebaseAuthDataSource
 import com.fromryan.projectfoodapp.data.datasource.cart.CartDataSource
@@ -29,11 +28,9 @@ import com.fromryan.projectfoodapp.presentation.home.HomeViewModel
 import com.fromryan.projectfoodapp.presentation.login.LoginViewModel
 import com.fromryan.projectfoodapp.presentation.profile.ProfileViewModel
 import com.fromryan.projectfoodapp.presentation.register.RegisterViewModel
-import com.fromryan.projectfoodapp.utils.SharedPreferenceUtils
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -41,7 +38,6 @@ object AppModules {
     private val networkModule =
         module {
             single<ApiDataServices> { ApiDataServices.invoke() }
-
         }
 
     private val localModule =
@@ -78,7 +74,7 @@ object AppModules {
             viewModel { LoginViewModel(get()) }
             viewModel { RegisterViewModel(get()) }
             viewModel { HomeViewModel(get(), get(), get()) }
-            viewModel { CardViewModel(get(),get()) }
+            viewModel { CardViewModel(get(), get()) }
             viewModel { ProfileViewModel(get()) }
             viewModel { CheckoutViewModel(get()) }
 

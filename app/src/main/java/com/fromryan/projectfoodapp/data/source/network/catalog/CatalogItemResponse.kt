@@ -2,7 +2,7 @@ package com.fromryan.projectfoodapp.data.source.network.catalog
 
 import com.google.gson.annotations.SerializedName
 
-data class CatalogItemResponse (
+data class CatalogItemResponse(
     @SerializedName("image_url")
     val imgUrl: String?,
     @SerializedName("nama")
