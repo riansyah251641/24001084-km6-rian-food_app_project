@@ -127,7 +127,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun changePasswordUser()  {
+    private fun changePasswordUser() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)

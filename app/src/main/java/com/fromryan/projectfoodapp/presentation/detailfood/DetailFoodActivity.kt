@@ -93,7 +93,7 @@ class DetailFoodActivity : AppCompatActivity() {
         }
     }
 
-    private fun clickAction()  {
+    private fun clickAction() {
         binding.tvIsiLokasi.setOnClickListener {
             val location = linkToMaps
             val intentUri = Uri.parse("geo:0,0?q=$location")
@@ -120,16 +120,14 @@ class DetailFoodActivity : AppCompatActivity() {
             detailViewModel.add()
         }
         binding.ivOrderDown.setOnClickListener {
-            if (count > 0)
-                {
-                    detailViewModel.minus()
-                    binding.tvCountOrder.text = count.toString()
-                    updateBtnDetailOrderText(priceItem)
-                    count -= 1
-                } else
-                {
-                    Toast.makeText(this, "minimal 1 cuyy", Toast.LENGTH_SHORT).show()
-                }
+            if (count > 0) {
+                detailViewModel.minus()
+                binding.tvCountOrder.text = count.toString()
+                updateBtnDetailOrderText(priceItem)
+                count -= 1
+            } else {
+                Toast.makeText(this, "minimal 1 cuyy", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.ivButtonBack.setOnClickListener {

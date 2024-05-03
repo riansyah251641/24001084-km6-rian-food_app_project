@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun navigationToProfile()  {
+    private fun navigationToProfile() {
         if (requireActivity() !is MainActivity) return
         (requireActivity() as MainActivity).navigateToProfile()
     }

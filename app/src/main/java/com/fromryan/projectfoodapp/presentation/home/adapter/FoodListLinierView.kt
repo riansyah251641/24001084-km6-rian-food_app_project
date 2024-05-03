@@ -12,7 +12,6 @@ class FoodListLinierView(
     private val binding: ItemFoodLinierBinding,
     private val listener: OnItemClickedListener<Catalog>,
 ) : RecyclerView.ViewHolder(binding.root), ViewHolderBinder<Catalog> {
-
     override fun bind(item: Catalog) {
         item.let {
             binding.ivFoodPhoto.load(it.image) {

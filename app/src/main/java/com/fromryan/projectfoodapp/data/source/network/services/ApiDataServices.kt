@@ -21,7 +21,7 @@ interface ApiDataServices {
 
     companion object {
         @JvmStatic
-        operator fun invoke(): ApiDataServices  {
+        operator fun invoke(): ApiDataServices {
             val okHttpClient =
                 OkHttpClient.Builder()
                     .connectTimeout(120, TimeUnit.SECONDS)

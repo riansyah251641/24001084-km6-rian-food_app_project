@@ -20,12 +20,12 @@ class MainActivity : AppCompatActivity() {
         setupBootomNav()
     }
 
-    private fun setupBootomNav()  {
+    private fun setupBootomNav() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         binding.navView.setupWithNavController(navController)
     }
 
-    fun navigateToProfile()  {
+    fun navigateToProfile() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         binding.navView.selectedItemId = R.id.navigation_profile
         navController.navigate(R.id.navigation_profile)

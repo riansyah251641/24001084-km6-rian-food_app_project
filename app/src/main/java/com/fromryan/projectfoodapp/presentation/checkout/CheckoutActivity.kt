@@ -98,7 +98,7 @@ class CheckoutActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkoutDialog()  {
+    private fun checkoutDialog() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

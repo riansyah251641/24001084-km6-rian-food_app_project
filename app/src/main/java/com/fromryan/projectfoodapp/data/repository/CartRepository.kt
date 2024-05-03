@@ -59,7 +59,7 @@ class CartRepositoryImpl(private val cartDataSource: CartDataSource) : CartRepos
             }
     }
 
-    override fun getCheckoutData(): Flow<ResultWrapper<Triple<List<Cart>, List<PriceItem>, Double>>>  {
+    override fun getCheckoutData(): Flow<ResultWrapper<Triple<List<Cart>, List<PriceItem>, Double>>> {
         return cartDataSource.getAllCarts()
             .map {
                 // mapping into cart list and sum the total price
@@ -136,7 +136,7 @@ class CartRepositoryImpl(private val cartDataSource: CartDataSource) : CartRepos
         return proceedFlow { cartDataSource.deleteCart(item.toCartEntity()) > 0 }
     }
 
-    override fun deleteAll(): Flow<ResultWrapper<Boolean>>  {
+    override fun deleteAll(): Flow<ResultWrapper<Boolean>> {
         return proceedFlow {
             cartDataSource.deleteAll()
             true
