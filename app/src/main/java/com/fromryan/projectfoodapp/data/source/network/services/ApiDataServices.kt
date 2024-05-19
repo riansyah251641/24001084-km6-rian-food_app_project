@@ -15,7 +15,7 @@ interface ApiDataServices {
     suspend fun getCategories(): CategoryResponse
 
     @GET("listmenu")
-    suspend fun getMenu(
+    suspend fun getCatalog(
         @Query("c") category: String? = null,
     ): CatalogResponse
 

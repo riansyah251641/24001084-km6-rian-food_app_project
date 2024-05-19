@@ -119,4 +119,11 @@ dependencies {
 
 //    koin
     implementation(libs.koin.android)
+
+//    user testing
+    androidTestImplementation(libs.mockk.android)
+    testImplementation(libs.mockk.agent)
+    testImplementation(libs.coroutine.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.core.testing)
 }
