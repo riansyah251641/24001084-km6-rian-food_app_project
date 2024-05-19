@@ -77,4 +77,6 @@ class HomeViewModelTest {
         assertEquals(2, result.payload?.size)
         verify { categoryRepository.getCategories() }
     }
+
+
 }

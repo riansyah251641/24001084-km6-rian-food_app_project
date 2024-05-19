@@ -92,4 +92,5 @@ class CartViewModelTest {
         viewModel.setCartNotes(mockk())
         verify { repository.setCartNotes(any()) }
     }
+
 }
