@@ -10,7 +10,8 @@ import kotlinx.coroutines.launch
 
 class CheckoutViewModel(private val cartRepository: CartRepository) : ViewModel() {
     val checkoutData = cartRepository.getCheckoutData().asLiveData(Dispatchers.IO)
-    fun deleteAllCarts(){
-        viewModelScope.launch(Dispatchers.IO){ cartRepository.deleteAll().collect() }
+
+    fun deleteAllCarts() {
+        viewModelScope.launch(Dispatchers.IO) { cartRepository.deleteAll().collect() }
     }
 }

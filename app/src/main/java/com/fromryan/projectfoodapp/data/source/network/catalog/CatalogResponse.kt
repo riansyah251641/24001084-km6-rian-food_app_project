@@ -2,13 +2,13 @@ package com.fromryan.projectfoodapp.data.source.network.catalog
 
 import com.google.gson.annotations.SerializedName
 
-data class CatalogResponse (
+data class CatalogResponse(
     @SerializedName("status")
-    val status : Boolean?,
+    val status: Boolean?,
     @SerializedName("code")
-    val code : Int?,
+    val code: Int?,
     @SerializedName("message")
-    val message : String?,
+    val message: String?,
     @SerializedName("data")
-    val data : List<CatalogItemResponse>,
-    )
+    val data: List<CatalogItemResponse>,
+)

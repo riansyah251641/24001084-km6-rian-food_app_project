@@ -5,38 +5,24 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import com.fromryan.projectfoodapp.R
-import com.fromryan.projectfoodapp.data.datasource.auth.AuthDataSource
-import com.fromryan.projectfoodapp.data.datasource.auth.FirebaseAuthDataSource
-import com.fromryan.projectfoodapp.data.repository.UserRepository
-import com.fromryan.projectfoodapp.data.repository.UserRepositoryImpl
-import com.fromryan.projectfoodapp.data.source.firebase.FirebaseService
-import com.fromryan.projectfoodapp.data.source.firebase.FirebaseServiceImpl
-import com.fromryan.projectfoodapp.databinding.ActivityLoginBinding
 import com.fromryan.projectfoodapp.databinding.ActivityRegisterBinding
 import com.fromryan.projectfoodapp.presentation.login.LoginActivity
 import com.fromryan.projectfoodapp.presentation.main.MainActivity
-import com.fromryan.projectfoodapp.utils.GenericViewModelFactory
 import com.fromryan.projectfoodapp.utils.proceedWhen
 import com.google.android.material.textfield.TextInputLayout
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterActivity : AppCompatActivity() {
     private val binding: ActivityRegisterBinding by lazy {
         ActivityRegisterBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: RegisterViewModel by viewModels {
-        val s: FirebaseService = FirebaseServiceImpl()
-        val ds: AuthDataSource = FirebaseAuthDataSource(s)
-        val r: UserRepository = UserRepositoryImpl(ds)
-        GenericViewModelFactory.create(RegisterViewModel(r))
-    }
+    private val registerViewModel: RegisterViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +54,12 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun proceedRegister(email: String, password: String, fullName: String) {
-        viewModel.doRegister(email, fullName, password).observe(this) {
+    private fun proceedRegister(
+        email: String,
+        password: String,
+        fullName: String,
+    ) {
+        registerViewModel.doRegister(email, fullName, password).observe(this) {
             it.proceedWhen(
                 doOnSuccess = {
                     binding.pbLoadingRegist.isVisible = false
@@ -82,27 +72,31 @@ class RegisterActivity : AppCompatActivity() {
                     Toast.makeText(
                         this,
                         "Login Failed : ${it.exception?.message.orEmpty()}",
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_SHORT,
                     ).show()
                 },
                 doOnLoading = {
                     binding.pbLoadingRegist.isVisible = true
                     binding.btnRegister.isVisible = false
-                }
+                },
             )
         }
     }
 
     private fun navigateToLogin() {
-        startActivity(Intent(this, LoginActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
-        })
+        startActivity(
+            Intent(this, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            },
+        )
     }
 
     private fun navigateToMain() {
-        startActivity(Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        })
+        startActivity(
+            Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            },
+        )
     }
 
     private fun isFormValid(): Boolean {
@@ -112,10 +106,9 @@ class RegisterActivity : AppCompatActivity() {
         val email = binding.editTextEmail.text.toString().trim()
 
         return checkNameValidation(fullName) && checkEmailValidation(email) &&
-                checkPasswordValidation(password, binding.textFieldPasswordRegist) &&
-                checkPasswordValidation(confirmPassword, binding.textFieldPwRepeat) &&
-                checkPwdAndConfirmPwd(password, confirmPassword)
-
+            checkPasswordValidation(password, binding.textFieldPasswordRegist) &&
+            checkPasswordValidation(confirmPassword, binding.textFieldPwRepeat) &&
+            checkPwdAndConfirmPwd(password, confirmPassword)
     }
 
     private fun checkNameValidation(fullName: String): Boolean {
@@ -146,7 +139,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun checkPasswordValidation(
         confirmPassword: String,
-        textInputLayout: TextInputLayout
+        textInputLayout: TextInputLayout,
     ): Boolean {
         return if (confirmPassword.isEmpty()) {
             textInputLayout.isErrorEnabled = true
@@ -164,7 +157,10 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkPwdAndConfirmPwd(password: String, confirmPassword: String): Boolean {
+    private fun checkPwdAndConfirmPwd(
+        password: String,
+        confirmPassword: String,
+    ): Boolean {
         return if (password != confirmPassword) {
             binding.textFieldPasswordRegist.isErrorEnabled = true
             binding.textFieldPasswordRegist.error =

@@ -2,7 +2,7 @@
 <resources>
     <style name="appTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/button_yellow</item>
-        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="colorOnPrimary">@color/bg_light</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
         <item name="colorSecondary">@color/md_theme_light_secondary</item>
@@ -32,7 +32,7 @@
 
     <style name="Base.Theme.myAppSplashScreen" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/button_yellow</item>
-        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="colorOnPrimary">@color/bg_light</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
         <item name="colorSecondary">@color/md_theme_light_secondary</item>

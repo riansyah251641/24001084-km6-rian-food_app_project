@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 import java.util.UUID
 
 @Parcelize
-data class Catalog (
+data class Catalog(
     var id: String? = UUID.randomUUID().toString(),
     var name: String,
     var description: String,

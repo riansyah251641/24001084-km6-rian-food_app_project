@@ -3,7 +3,6 @@ package com.fromryan.projectfoodapp.utils
 import android.content.Context
 import android.content.SharedPreferences
 
-
 object SharedPreferenceUtils {
     fun createPreference(
         context: Context,

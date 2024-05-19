@@ -7,15 +7,13 @@ import com.fromryan.projectfoodapp.data.model.Cart
 import com.fromryan.projectfoodapp.data.repository.CartRepository
 import com.fromryan.projectfoodapp.data.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class CardViewModel(
     private val repo: CartRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
 ) : ViewModel() {
-
-
     fun getAllCarts() = repo.getUserCartData().asLiveData(Dispatchers.IO)
 
     fun decreaseCart(item: Cart) {

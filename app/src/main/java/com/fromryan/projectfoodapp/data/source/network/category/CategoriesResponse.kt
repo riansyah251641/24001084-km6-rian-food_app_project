@@ -4,13 +4,13 @@ import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
 @Keep
-data class CategoryResponse (
+data class CategoryResponse(
     @SerializedName("status")
-    val status : Boolean?,
+    val status: Boolean?,
     @SerializedName("code")
-    val code : Int?,
+    val code: Int?,
     @SerializedName("message")
-    val message : String?,
+    val message: String?,
     @SerializedName("data")
-    val data : List<CategoryItemResponse>,
+    val data: List<CategoryItemResponse>,
 )

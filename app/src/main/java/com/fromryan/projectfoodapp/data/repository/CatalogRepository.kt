@@ -12,7 +12,7 @@ interface CatalogRepository {
     fun getCatalog(categoryName: String? = null): Flow<ResultWrapper<List<Catalog>>>
 }
 
-class CatalogRepositoryImpl(private val dataSource : CatalogDataSource) :CatalogRepository{
+class CatalogRepositoryImpl(private val dataSource: CatalogDataSource) : CatalogRepository {
     override fun getCatalog(categoryName: String?): Flow<ResultWrapper<List<Catalog>>> {
         return flow {
             emit(ResultWrapper.Loading())
