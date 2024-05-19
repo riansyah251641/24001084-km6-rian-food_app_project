@@ -7,6 +7,6 @@ class CatalogApiDataSource(
     private val service: ApiDataServices,
 ) : CatalogDataSource {
     override suspend fun getCatalogData(categoryName: String?): CatalogResponse {
-        return service.getMenu(categoryName)
+        return service.getCatalog(categoryName)
     }
 }

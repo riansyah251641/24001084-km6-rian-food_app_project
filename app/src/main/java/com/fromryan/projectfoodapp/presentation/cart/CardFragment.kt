@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import com.fromryan.projectfoodapp.R
 import com.fromryan.projectfoodapp.data.model.Cart
 import com.fromryan.projectfoodapp.databinding.FragmentCardBinding
@@ -19,7 +18,7 @@ import com.fromryan.projectfoodapp.utils.hideKeyboard
 import com.fromryan.projectfoodapp.utils.proceedWhen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CardFragment : Fragment() {
+class CardFragment : androidx.fragment.app.Fragment() {
     private lateinit var binding: FragmentCardBinding
 
     private val cartViewModel: CardViewModel by viewModel()
